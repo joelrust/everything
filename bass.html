@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="skeleton.css">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <script src="js/jquery.js"></script>
+   <script src="js/words.js"></script>
 
 <style>
 .wrapper {
@@ -44,6 +45,7 @@ var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", 
    var x = 1;
    // word range
    var wr = 25;
+   var mult = 1;
 
  var notes = ["49", 
               "49", "48", 
@@ -69,7 +71,7 @@ var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", 
 
 
  function startText() {  document.getElementById("clicker").innerHTML = "wait"; var timeleft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = timeleft; var downloadTimer = setInterval(function() {timeleft -= 1; document.getElementById("demo").innerHTML = timeleft;
-  if(iter <= 0) { iter += 1;  setInterval(function() {wr *= 1.146}, 15000);
+  if(iter <= 0) { iter += 1;  setInterval(function() {wr *= 1.146}, (15000 * mult);
   setTimeout(function(){
     setTimeout(function(){y += x; x = 2},  6000);
     setTimeout(function(){y += x; x = 3; hi = 9}, 12000);
