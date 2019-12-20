@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="skeleton.css">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <script src="js/jquery.js"></script>
+  <script src="js/words.js"></script>
+   <script src="js/const.js"></script>
+
 
 <style>
 .wrapper {
@@ -30,7 +33,6 @@
 
 <script type="text/javascript">
 // has been checked as far as 'lancashire':
-var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", "for", "you", "he", "be", "with", "on", "that", "by", "at", "are", "not", "this", "but", "'s", "they", "his", "from", "had", "she", "which", "or", "we", "an", "n't", "'s", "were", "that", "been", "have", "their", "has", "would", "what", "will", "there", "if", "can", "all", "her", "as", "who", "have", "do", "that", "one", "said", "them", "some", "could", "him", "into", "its", "then", "two", "when", "up", "time", "my", "out", "so", "did", "about", "your", "now", "me", "no", "more", "other", "just", "these", "also", "people", "any", "first", "only", "new", "may", "very", "should", "as", "like", "her", "than", "as", "how", "well", "way", "our", "as", "between", "years", "er", "many", "those", "there", "'ve", "being", "because", "do vdi", "'re", "yeah", "three", "down", "such", "back", "good", "where", "year", "through", "'ll", "must", "still", "even", "know", "too", "here", "get", "own", "does", "oh", "last", "no", "more", "'m", "going", "so", "erm", "after", "us", "government", "might", "same", "much", "see", "yes", "go", "make", "day", "man", "another", "world", "see", "got", "work", "however", "life", "again", "against", "think", "never", "under", "one ", "most", "old", "over", "know", "something", "mr", "take", "why", "each", "while", "part", "on", "number", "out_of", "made", "different", "really", "went", "'", "came", "after", "children", "always", "four", "without", "one", "within", "system", "local", "during", "most", "although", "next", "small", "case", "great", "things"];
  var audio = new Audio();
  //how many times it's been pressed:
    var iter = 0;
@@ -43,9 +45,10 @@ var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", 
      // how many notes to use
    var x = 1;
    // word range
-   var wr = 25;
 
- var notes = ["49", 
+
+
+  var notes = ["49", 
               "51", "49", 
               "53", "51", "49", 
               "55", "53", "51", "49",
@@ -68,45 +71,52 @@ var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", 
               ];
 
 
- function startText() {  document.getElementById("clicker").innerHTML = "wait"; var timeleft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = timeleft; var downloadTimer = setInterval(function() {timeleft -= 1; document.getElementById("demo").innerHTML = timeleft;
-  if(iter <= 0) { iter += 1;  setInterval(function() {wr *= 1.146}, 15000);
-  setTimeout(function(){
-    setTimeout(function(){y += x; x = 2},  8000);
-    setTimeout(function(){y += x; x = 3}, 16000);
-    setTimeout(function(){y += x; x = 4}, 28000);
-    setTimeout(function(){lo = 4; hi = 9}, 30000);
-    setTimeout(function(){y += x; x = 3}, 36000);
-    setTimeout(function(){y += x; x = 4; hi = 8; lo = 4}, 42000);
-    setTimeout(function(){y += x; x = 4}, 48000);
-    setTimeout(function(){y += x; x = 2; hi = 7}, 60000);
-    setTimeout(function(){y += x; x = 4}, 68000);
-    setTimeout(function(){y += x; x = 4}, 76000);
-    setTimeout(function(){y += x; x = 4; hi = 6; lo = 3}, 84000);
-    setTimeout(function(){y += x; x = 3; hi = 5}, 90000);
-    setTimeout(function(){y += x; x = 2}, 96000);
-    setTimeout(function(){y += x; x = 1; hi = 4; document.getElementById("dyn").innerHTML = "mp"}, 102000);
-    setTimeout(function(){hi = 4; lo = 2}, 120000);
-    setTimeout(function(){y += x; x = 3}, 130000);
-    setTimeout(function(){y += x; x = 4; hi = 3}, 142000);
-    setTimeout(function(){y += x; x = 2; lo = 1}, 150000);
-    setTimeout(function(){y += x; x = 3}, 166000);
-    setTimeout(function(){y += x; x = 4}, 172000);
+ function startText() {  document.getElementById("clicker").innerHTML = "wait"; var timeleft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = timeleft; 
+                       var downloadTimer = setInterval(function() {timeleft -= 1; 
+  if(iter <= 0) { iter += 1;  setInterval(function() {wr *= expo; wlo *= expo }, (15000 * mult));
+ setTimeout(function(){
+    setTimeout(function(){y += x; x = 2},  (8000 * mult));
+    setTimeout(function(){y += x; x = 3}, (16000 * mult));
+    setTimeout(function(){y += x; x = 4}, (28000 * mult));
+    setTimeout(function(){lo = 4; hi = 9}, (30000 * mult));
+    setTimeout(function(){y += x; x = 3}, (36000 * mult));
+    setTimeout(function(){y += x; x = 4; hi = 8; lo = 4}, (42000 * mult));
+    setTimeout(function(){y += x; x = 4}, (48000 * mult));
+    setTimeout(function(){y += x; x = 2; hi = 7}, (60000 * mult));
+    setTimeout(function(){y += x; x = 4}, (68000 * mult));
+    setTimeout(function(){y += x; x = 4}, (76000 * mult));
+    setTimeout(function(){y += x; x = 4; hi = 6; lo = 3}, (84000 * mult));
+    setTimeout(function(){y += x; x = 3; hi = 5}, (90000 * mult));
+    setTimeout(function(){y += x; x = 2}, (96000 * mult));
+    setTimeout(function(){y += x; x = 1; hi = 4; document.getElementById("dyn").innerHTML = "mp"}, (102000 * mult));
+    setTimeout(function(){hi = 4; lo = 2}, (120000 * mult));
+    setTimeout(function(){y += x; x = 3}, (130000 * mult));
+    setTimeout(function(){y += x; x = 4; hi = 3}, (142000 * mult));
+    setTimeout(function(){y += x; x = 2; lo = 1}, (150000 * mult));
+    setTimeout(function(){y += x; x = 3}, (166000 * mult));
+    setTimeout(function(){y += x; x = 4}, (172000 * mult));
     
   }, 5000);
   };
   if(timeleft <= 0) {
     clearInterval(downloadTimer);
-      var nam = (notes[(Math.floor(Math.random() * x)) + y])+".mp3";
+      var nam = "audio/"+(notes[(Math.floor(Math.random() * x)) + y])+".mp3";
         audio.src = nam;
        audio.play()
      document.getElementById("clicker").innerHTML = "Next";
-    var wn = [Math.floor(Math.random() * wr)];
-    document.getElementById("demo").innerHTML = words[wn]
+    var wn = [Math.floor(Math.random() * (wr - wlo + wloinit) + wlo - wloinit)];
+    document.getElementById("demo").innerHTML = wordlist[wn]
     // uncomment next line forword debugging
  //  + " | " + wn + "/" + wr + " | " + nam + " | " + x +"/" + y 
     ;
 
-       } }, 1000); };
+       } else { document.getElementById("demo").innerHTML = timeleft; } }, 1000); };
 </script>
 </body>
 </html>
+
+
+
+
+
+ 
