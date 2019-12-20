@@ -95,7 +95,8 @@
     setTimeout(function(){y += x; x = 2; lo = 1}, (150000 * mult));
     setTimeout(function(){y += x; x = 3}, (166000 * mult));
     setTimeout(function(){y += x; x = 4}, (172000 * mult));
-    
+    setTimeout(function() {var e = document.getElementById("demo"); e.id = "fin"; document.getElementById("fin").innerHTML = "[stop]"; document.getElementById("clicker").innerHTML = "Reset"; downloadTimer = 0; timeleft = 0; document.getElementById('clicker').setAttribute( "onClick", "window.location.reload(true)" ) ; audio = 0;  document.getElementById("dyn").innerHTML = "—";   }, (180000 * mult));
+
   }, 5000);
   };
   if(timeleft <= 0) {
