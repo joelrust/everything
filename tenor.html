@@ -104,7 +104,7 @@
         audio.src = nam;
        audio.play()
      document.getElementById("clicker").innerHTML = "Next";
-    var wn = [Math.floor(Math.random() * (wr - wlo + wloinit) + wlo - wloinit)];
+    var wn = [(Math.floor(Math.random() * (wr - wlo + wloinit) + wlo - wloinit)) % wordlist.length];
     document.getElementById("demo").innerHTML = wordlist[wn]
     // uncomment next line forword debugging
  //  + " | " + wn + "/" + wr + " | " + nam + " | " + x +"/" + y 
