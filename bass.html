@@ -72,7 +72,8 @@
 
  function startText() {  document.getElementById("clicker").innerHTML = "wait"; var timeleft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = timeleft; 
                        var downloadTimer = setInterval(function() {timeleft -= 1; 
-  if(iter <= 0) { iter += 1;  setInterval(function() {wr *= expo; wlo *= expo }, (15000 * mult));
+  if(iter <= 0) { audio.src = "click.mp3";
+       audio.play(); iter += 1;  setInterval(function() {wr *= expo; wlo *= expo }, (15000 * mult));
   setTimeout(function(){
     setTimeout(function(){y += x; x = 2},  (6000 * mult));
     setTimeout(function(){y += x; x = 3; hi = 9}, (12000 * mult));
