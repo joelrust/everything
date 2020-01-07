@@ -30,6 +30,9 @@
 <h1><p id="demo"><br></p></h1></div>
 <div class="wrapper">
 <button id="clicker" class="button-primary"  onclick="startText()">Start</button> </div>
+  
+<div class="wrapper">
+<button id="clicker" class="button-primary"  onclick="audioLaunch()">(iOS only: Enable Audio)</button> </div>
 
 <script type="text/javascript">
 // has been checked as far as 'lancashire':
@@ -73,8 +76,7 @@
 
  function startText() {  document.getElementById("clicker").innerHTML = "wait"; var timeleft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = timeleft; 
                        var downloadTimer = setInterval(function() {timeleft -= 1; 
-  if(iter <= 0) { audio.src = "click.mp3";
-       audio.play();  iter += 1;  setInterval(function() {wr *= expo; wlo *= expo }, (15000 * mult));
+  if(iter <= 0) {   iter += 1;  setInterval(function() {wr *= expo; wlo *= expo }, (15000 * mult));
  setTimeout(function(){
     setTimeout(function(){y += x; x = 2},  (8000 * mult));
     setTimeout(function(){y += x; x = 3}, (16000 * mult));
@@ -113,7 +115,18 @@
     ;
 
        } else { document.getElementById("demo").innerHTML = timeleft; } }, 1000); };
+    function audioLaunch() {
+  
+  audio.src = "click.mp3";
+       audio.play(); }
 </script>
+  
+  
+  
+
+  
+ 
+  
 </body>
 </html>
 
