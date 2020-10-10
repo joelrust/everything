@@ -25,39 +25,35 @@ var hi = 10;
 //floor of wait time in seconds:
 var lo = 5;
 
-// which of notes to start from
-var y = 0;
-
-// how many notes to use
-var x = 1;
-
 // pitch ranges
-var notes = [
-    "49",
-    "51", "49",
-    "53", "51", "49",
-    "55", "53", "51", "49",
-    "56", "53", "51",
-    "56", "54", "53", "51",
-    "57", "54", "53", "51",
-    "57", "56",
-    "57", "56", "52", "50",
-    "57", "54", "52", "50",
-    "57", "55", "54", "52",
-    "57", "55", "52",
-    "57", "55",
-    "57",
-    "60", "57",
-    "60", "58", "57",
-    "62", "60", "58", "57",
-    "60", "58",
-    "60", "58", "56",
-    "60", "58", "56", "54",
+const pitchSets = [
+    ["49"],                              // 0
+    ["51", "49"],                        // 1
+    ["53", "51", "49"],
+    ["55", "53", "51", "49"],
+    ["56", "53", "51"],
+    ["56", "54", "53", "51"],
+    ["57", "54", "53", "51"],
+    ["57", "56"],
+    ["57", "56", "52", "50"],
+    ["57", "54", "52", "50"],
+    ["57", "55", "54", "52"],
+    ["57", "55", "52"],
+    ["57", "55"],
+    ["57"],
+    ["60", "57"],
+    ["60", "58", "57"],
+    ["62", "60", "58", "57"],
+    ["60", "58"],
+    ["60", "58", "56"],
+    ["60", "58", "56", "54"],
     // start of p. 5
-    "64", "62",
-    "63", "61", "60", "58", "57",
-    "62", "61", "59", "58", "56", "54",
+    ["64", "62"],
+    ["63", "61", "60", "58", "57"],
+    ["62", "61", "59", "58", "56", "54"],
 ];
+let currentPitchSetIndex = 0;
+
 
 function startPiece() {
     setInterval(
@@ -66,99 +62,50 @@ function startPiece() {
     );
 
     setTimeout(function () {
+        setTimeout(function () { currentPitchSetIndex = 1 }, (8000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 2 }, (16000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 3}, (28000 * mult));
+        setTimeout(function () { lo = 4; hi = 9 }, (30000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 4 }, (36000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 5; hi = 8; lo = 4 }, (42000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 6; }, (48000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 7; hi = 7 }, (60000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 8; }, (68000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 9; }, (76000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 10; hi = 6; lo = 3 }, (84000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 11; hi = 5 }, (90000 * mult));
+        setTimeout(function () { currentPitchSetIndex = 12; }, (96000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 2
-        }, (8000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 3
-        }, (16000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 4
-        }, (28000 * mult));
-        setTimeout(function () {
-            lo = 4;
-            hi = 9
-        }, (30000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 3
-        }, (36000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 4;
-            hi = 8;
-            lo = 4
-        }, (42000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 4
-        }, (48000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 2;
-            hi = 7
-        }, (60000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 4
-        }, (68000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 4
-        }, (76000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 4;
-            hi = 6;
-            lo = 3
-        }, (84000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 3;
-            hi = 5
-        }, (90000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 2
-        }, (96000 * mult));
-        setTimeout(function () {
-            y += x;
-            x = 1;
+            currentPitchSetIndex = 13;
             hi = 4;
             document.getElementById("dyn").innerHTML = "mp"
         }, (102000 * mult));
+        setTimeout(function () {
+            currentPitchSetIndex = 14;
+        }, (114000 * mult));
         setTimeout(function () {
             hi = 4;
             lo = 2
         }, (120000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 3
+            currentPitchSetIndex = 15;
         }, (130000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 4;
+            currentPitchSetIndex = 16;
             hi = 3
         }, (142000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 2;
+            currentPitchSetIndex = 17;
             lo = 1
         }, (150000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 3
+            currentPitchSetIndex = 18;
         }, (166000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 4
+            currentPitchSetIndex = 19;
         }, (172000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 2;
+            currentPitchSetIndex = 20;
             hi = 18;
             lo = 18
         }, (180000 * mult));
@@ -231,8 +178,7 @@ function startPiece() {
             lo = 20
         }, (197000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 5;
+            currentPitchSetIndex = 21;
             hi = 18;
             lo = 18
         }, (198000 * mult));
@@ -284,8 +230,7 @@ function startPiece() {
             document.getElementById("dyn").innerHTML = "mf"
         }, (210000 * mult));
         setTimeout(function () {
-            y += x;
-            x = 6;
+            currentPitchSetIndex = 22;
             hi = 18;
             lo = 18
         }, (218000 * mult));
@@ -356,7 +301,9 @@ function startPiece() {
 
 function playAudioChooseWord() {
     // select audio file and play it
-    var nam = "audio/"+(notes[(Math.floor(Math.random() * x)) + y])+".mp3";
+    const currentPitchSet = pitchSets[currentPitchSetIndex];
+    const pitchNumIndex = Math.floor(Math.random() * currentPitchSet.length);
+    const nam = `audio/${currentPitchSet[pitchNumIndex]}.mp3`;
     audio.src = nam;
     audio.play();
     document.getElementById("startButton").innerHTML = "Next";
