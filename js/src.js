@@ -11,6 +11,11 @@ var expo = 1.25;
 const startButton = document.querySelector("#startButton");
 startButton.onclick = startText;
 
+function startTenor() {
+    part = 'tenor'
+    startText();
+}
+
 const audioButton = document.querySelector("#audioButton");
 audioButton.onclick = audioLaunch;
 
@@ -25,8 +30,8 @@ var hi = 10;
 //floor of wait time in seconds:
 var lo = 5;
 
-// pitch ranges
-const pitchSets = [
+// pitch range
+const tenorPitchSets = [
     ["49"],                              // 0
     ["51", "49"],                        // 1
     ["53", "51", "49"],
@@ -52,8 +57,30 @@ const pitchSets = [
     ["63", "61", "60", "58", "57"],
     ["62", "61", "59", "58", "56", "54"],
 ];
-let currentPitchSetIndex = 0;
 
+const bassPitchSets = [
+    ["49"],
+    ["49", "48"],
+    ["49", "48", "46"],
+    ["49", "46", "44"],
+    ["49", "47", "46", "44"],
+    ["49", "47", "44"],
+    ["49", "47", "45", "44"],
+    ["45", "44"],
+    ["50", "48", "45", "44"],
+    ["50", "48", "47", "45"],
+    ["52", "50", "48", "47"],
+    ["52", "50", "48"],
+    ["52", "48"],
+    ["48"],
+    ["50", "48"],
+    ["53", "50", "48"],
+    ["55", "53", "50", "48"],
+    ["53", "51"],
+    ["53", "51", "49"],
+];
+
+let currentPitchSetIndex = 0;
 
 function startPiece() {
     setInterval(
@@ -61,6 +88,90 @@ function startPiece() {
         (15000 * mult)
     );
 
+    if (part === 'tenor') {
+        doTenorTimeouts();
+    } else if (part === 'bass') {
+        doBassTimeouts();
+    }
+
+}
+
+function playAudioChooseWord() {
+    // select audio file and play it
+    let pitchSets;
+    if (part === 'tenor') {
+        pitchSets = tenorPitchSets;
+    } else if (part === 'bass') {
+        pitchSets = bassPitchSets;
+    }
+
+    const currentPitchSet = pitchSets[currentPitchSetIndex];
+    const pitchNumIndex = Math.floor(Math.random() * currentPitchSet.length);
+    const nam = `audio/${currentPitchSet[pitchNumIndex]}.mp3`;
+    audio.src = nam;
+    audio.play();
+    document.getElementById("startButton").innerHTML = "Next";
+
+    // choose the word and show it
+    var wn = [( Math.floor(Math.random() * (wordRange - wordLowBounds + wordLowBoundsInitial)
+        + wordLowBounds - wordLowBoundsInitial)) % wordlist.length
+    ];
+    document.getElementById("demo").innerHTML = wordlist[wn];
+    // uncomment next line forword debugging
+    //  + " | " + wn + "/" + wordRange + " | " + nam + " | " + x +"/" + y
+}
+
+function startText() {
+    document.getElementById("startButton").innerHTML = "wait";
+    var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1);
+    document.getElementById("demo").innerHTML = countdownSecondsLeft;
+
+    if (isFirstClick) {
+        // Set off all of the initial timing based stuff on first click only
+        isFirstClick = false;
+        startPiece();
+    }
+
+    var countdownTimer = setInterval(
+        function() {
+            countdownSecondsLeft -= 1;
+            if (countdownSecondsLeft <= 0) {
+                // Stop the countdown, and play the audio
+                playAudioChooseWord();
+                clearInterval(countdownTimer);
+            } else {
+                // Show the new value of the countdown
+                document.getElementById("demo").innerHTML = countdownSecondsLeft;
+            }
+        },
+        1000
+    );
+};
+
+function audioLaunch() {
+    audio.src = "click.mp3";
+    audio.play();
+}
+
+
+
+
+
+
+// function constructSetTimeout(paramsArr) {
+//     if (paramsArray.length === 0) {
+//         return;
+//     } else {
+//         const currentParams = paramsArr.pop();  // this might be wrong
+//         // set the params for the globals
+//         currentPitchSetIndex = currentParams.pitchSetIndex;
+//         // call myself
+//         setTimeout(function() { constructSetTimeOut(paramsArr) }, currentParams.nextTimeout)
+//     }
+// }
+
+
+function doTenorTimeouts() {
     setTimeout(function () {
         setTimeout(function () { currentPitchSetIndex = 1 }, (8000 * mult));
         setTimeout(function () { currentPitchSetIndex = 2 }, (16000 * mult));
@@ -296,55 +407,30 @@ function startPiece() {
             (240000 * mult)
         );
     }, 5000);
-
 }
 
-function playAudioChooseWord() {
-    // select audio file and play it
-    const currentPitchSet = pitchSets[currentPitchSetIndex];
-    const pitchNumIndex = Math.floor(Math.random() * currentPitchSet.length);
-    const nam = `audio/${currentPitchSet[pitchNumIndex]}.mp3`;
-    audio.src = nam;
-    audio.play();
-    document.getElementById("startButton").innerHTML = "Next";
-
-    // choose the word and show it
-    var wn = [( Math.floor(Math.random() * (wordRange - wordLowBounds + wordLowBoundsInitial)
-        + wordLowBounds - wordLowBoundsInitial)) % wordlist.length
-    ];
-    document.getElementById("demo").innerHTML = wordlist[wn];
-    // uncomment next line forword debugging
-    //  + " | " + wn + "/" + wordRange + " | " + nam + " | " + x +"/" + y
-}
-
-function startText() {
-    document.getElementById("startButton").innerHTML = "wait";
-    var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1);
-    document.getElementById("demo").innerHTML = countdownSecondsLeft;
-
-    if (isFirstClick) {
-        // Set off all of the initial timing based stuff on first click only
-        isFirstClick = false;
-        startPiece();
-    }
-
-    var countdownTimer = setInterval(
-        function() {
-            countdownSecondsLeft -= 1;
-            if (countdownSecondsLeft <= 0) {
-                // Stop the countdown, and play the audio
-                playAudioChooseWord();
-                clearInterval(countdownTimer);
-            } else {
-                // Show the new value of the countdown
-                document.getElementById("demo").innerHTML = countdownSecondsLeft;
-            }
-        },
-        1000
-    );
-};
-
-function audioLaunch() {
-    audio.src = "click.mp3";
-    audio.play();
+function doBassTimeouts()  {
+    setTimeout(function(){
+        setTimeout(function(){y += x; x = 2},  (6000 * mult));
+        setTimeout(function(){y += x; x = 3; hi = 9}, (12000 * mult));
+        setTimeout(function(){y += x; x = 3}, (24000 * mult));
+        setTimeout(function(){y += x; x = 4; hi = 8; lo = 4}, (30000 * mult));
+        setTimeout(function(){y += x; x = 3}, (42000 * mult));
+        setTimeout(function(){y += x; x = 4; hi = 7}, (48000 * mult));
+        setTimeout(function(){y += x; x = 2; hi = 6; lo = 3}, (60000 * mult));
+        setTimeout(function(){y += x; x = 4}, (68000 * mult));
+        setTimeout(function(){y += x; x = 4; hi = 5}, (80000 * mult));
+        setTimeout(function(){y += x; x = 4}, (88000 * mult));
+        setTimeout(function(){hi = 4; lo = 2; document.getElementById("dyn").innerHTML = "mp" }, (90000 * mult));
+        setTimeout(function(){y += x; x = 3}, (93000 * mult));
+        setTimeout(function(){y += x; x = 2}, (99000 * mult));
+        setTimeout(function(){y += x; x = 1; hi = 3}, (105000 * mult));
+        setTimeout(function(){y += x; x = 2}, (117000 * mult));
+        setTimeout(function(){hi = 3; lo = 1}, (120000 * mult));
+        setTimeout(function(){y += x; x = 3; hi = 2}, (132000 * mult));
+        setTimeout(function(){y += x; x = 4;}, (144000 * mult));
+        setTimeout(function(){y += x; x = 2; hi = 1}, (150000 * mult));
+        setTimeout(function(){y += x; x = 3; hi = 2}, (166000 * mult));
+        setTimeout(function() {var e = document.getElementById("demo"); e.id = "fin"; document.getElementById("fin").innerHTML = "[stop]"; document.getElementById("clicker").innerHTML = "Reset"; countdownTimer = 0; countdownSecondsLeft = 0; document.getElementById('clicker').setAttribute( "onClick", "window.location.reload(true)" ) ; audio = 0;  document.getElementById("dyn").innerHTML = "—";   }, (180000 * mult));
+    }, 5000);
 }
