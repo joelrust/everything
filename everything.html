@@ -32,18 +32,18 @@
 // has been checked as far as 'lancashire':
 var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", "for", "you", "he", "be", "with", "on", "that", "by", "at", "are", "not", "this", "but", "'s", "they", "his", "from", "had", "she", "which", "or", "we", "an", "n't", "'s", "were", "that", "been", "have", "their", "has", "would", "what", "will", "there", "if", "can", "all", "her", "as", "who", "have", "do", "that", "one", "said", "them", "some", "could", "him", "into", "its", "then", "two", "when", "up", "time", "my", "out", "so", "did", "about", "your", "now", "me", "no", "more", "other", "just", "these", "also", "people", "any", "first", "only", "new", "may", "very", "should", "as", "like", "her", "than", "as", "how", "well", "way", "our", "as", "between", "years", "er", "many", "those", "there", "'ve", "being", "because", "do vdi", "'re", "yeah", "three", "down", "such", "back", "good", "where", "year", "through", "'ll", "must", "still", "even", "know", "too", "here", "get", "own", "does", "oh", "last", "no", "more", "'m", "going", "so", "erm", "after", "us", "government", "might", "same", "much", "see", "yes", "go", "make", "day", "man", "another", "world", "see", "got", "work", "however", "life", "again", "against", "think", "never", "under", "one ", "most", "old", "over", "know", "something", "mr", "take", "why", "each", "while", "part", "on", "number", "out_of", "made", "different", "really", "went", "'", "came", "after", "children", "always", "four", "without", "one", "within", "system", "local", "during", "most", "although", "next", "small", "case", "great", "things"];
  var audio = new Audio();
- var notes = ["49", 
-              "49", "48", 
-              "49", "48", "46", 
+ var notes = ["49",
+              "49", "48",
+              "49", "48", "46",
               "49", "46", "44",
               "49", "47", "46", "44",
-              "49", "47", "44", 
+              "49", "47", "44",
               "49", "47", "45", "44",
-              "45", "44", 
+              "45", "44",
               "50", "48", "45", "44",
               "50", "48", "47", "45",
               "52", "50", "48", "47",
-              
+
               ];
 //how many times it's been pressed:
    var iter = 0;
@@ -51,24 +51,24 @@ var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", 
    var tra = 6;
    //floor of wait time in seconds:
    var tlo = 5;
-   // which of notes to start from 
+   // which of notes to start from
    var y = 0;
      // how many notes to use
    var x = 1;
    // word range
-   var wr = 25;
+   varwordRange= 25;
   // var nxt = function() {x += 4};
    var r = 0;
 
  function startText() {
   document.getElementById("clicker").innerHTML = "wait";
-  var timeleft = ([Math.floor(Math.random() * tra) + tlo] * 1);
- document.getElementById("demo").innerHTML = timeleft;
- var downloadTimer = setInterval(function()
-{timeleft -= 1; document.getElementById("demo").innerHTML = timeleft;
+  var countdownSecondsLeft = ([Math.floor(Math.random() * tra) + tlo] * 1);
+ document.getElementById("demo").innerHTML = countdownSecondsLeft;
+ var countdownTimer = setInterval(function()
+{countdownSecondsLeft -= 1; document.getElementById("demo").innerHTML = countdownSecondsLeft;
   if(iter <= 0) {
   iter += 1;
-  setInterval(function() {wr *= 1.146}, 15000);
+  setInterval(function() {wordRange*= 1.146}, 15000);
   setTimeout(function(){
     setTimeout(function(){y += x; x = 2},  6000);
     setTimeout(function(){y += x; x = 3}, 12000);
@@ -82,16 +82,16 @@ var words = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", 
     setTimeout(function(){y += x; x = 4}, 88000);
   }, 5000);
   };
-  if(timeleft <= 0) {
-    clearInterval(downloadTimer);
+  if(countdownSecondsLeft <= 0) {
+    clearInterval(countdownTimer);
       var nam = (notes[(Math.floor(Math.random() * x)) + y])+".mp3";
         audio.src = nam;
        audio.play()
      document.getElementById("clicker").innerHTML = "Next";
-    var wn = [Math.floor(Math.random() * wr)];
+    var wn = [Math.floor(Math.random() * wordRange)];
     document.getElementById("demo").innerHTML = words[wn]
     // uncomment next line forword debugging
-   + " | " + wn + "/" + wr + " | " + nam + " | " + x +"/" + y 
+   + " | " + wn + "/" +wordRange+ " | " + nam + " | " + x +"/" + y
     ;
 
        } }, 1000); };

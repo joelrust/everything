@@ -45,7 +45,7 @@
    var hi = 10;
    //floor of wait time in seconds:
    var lo = 5;
-   // which of notes to start from 
+   // which of notes to start from
    var y = 0;
      // how many notes to use
    var x = 1;
@@ -53,16 +53,16 @@
 
 
 
-  var notes = ["49", 
-              "51", "49", 
-              "53", "51", "49", 
+  var notes = ["49",
+              "51", "49",
+              "53", "51", "49",
               "55", "53", "51", "49",
-              "56", "53", "51", 
+              "56", "53", "51",
               "56", "54", "53", "51",
-              "57", "54", "53", "51", 
+              "57", "54", "53", "51",
               "57", "56",
               "57", "56", "52", "50",
-              "57", "54", "52", "50", 
+              "57", "54", "52", "50",
               "57", "55", "54", "52",
               "57", "55", "52",
               "57", "55",
@@ -72,7 +72,7 @@
               "62", "60", "58", "57",
               "60", "58",
               "60", "58", "56",
-              "60", "58", "56", "54", 
+              "60", "58", "56", "54",
        // start of p. 5
               "64", "62",
               "63", "61", "60", "58", "57",
@@ -80,9 +80,9 @@
               ];
 
 
- function startText() {  document.getElementById("clicker").innerHTML = "wait"; var timeleft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = timeleft; 
-                       var downloadTimer = setInterval(function() {timeleft -= 1; 
-  if(iter <= 0) {   iter += 1;  setInterval(function() {wr *= expo; wlo *= expo }, (15000 * mult));
+ function startText() {  document.getElementById("clicker").innerHTML = "wait"; var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = countdownSecondsLeft;
+                       var countdownTimer = setInterval(function() {countdownSecondsLeft -= 1;
+  if(iter <= 0) {   iter += 1;  setInterval(function() {wordRange*= expo; wordLowBounds *= expo }, (15000 * mult));
  setTimeout(function(){
     setTimeout(function(){y += x; x = 2},  (8000 * mult));
     setTimeout(function(){y += x; x = 3}, (16000 * mult));
@@ -134,9 +134,9 @@
     setTimeout(function(){hi = 3; lo = 3}, (207000 * mult));
     setTimeout(function(){hi = 2; lo = 2}, (208000 * mult));
     setTimeout(function(){hi = 1; lo = 1}, (209000 * mult));
-    
-    
-    
+
+
+
     setTimeout(function(){y += x; x = 6; hi = 12; lo = 12}, (218000 * mult));
     setTimeout(function(){hi = 11; lo = 11}, (219000 * mult));
     setTimeout(function(){hi = 10; lo = 10}, (220000 * mult));
@@ -149,39 +149,39 @@
     setTimeout(function(){hi = 3; lo = 3}, (227000 * mult));
     setTimeout(function(){hi = 2; lo = 2}, (228000 * mult));
     setTimeout(function(){hi = 1; lo = 1}, (229000 * mult));
-    
-    
-    
-    
 
-    setTimeout(function() {var e = document.getElementById("demo"); e.id = "fin"; document.getElementById("fin").innerHTML = "[stop]"; document.getElementById("clicker").innerHTML = "Reset"; downloadTimer = 0; timeleft = 0; document.getElementById('clicker').setAttribute( "onClick", "window.location.reload(true)" ) ; audio = 0;  document.getElementById("dyn").innerHTML = "—";   }, (240000 * mult));
+
+
+
+
+    setTimeout(function() {var e = document.getElementById("demo"); e.id = "fin"; document.getElementById("fin").innerHTML = "[stop]"; document.getElementById("clicker").innerHTML = "Reset"; countdownTimer = 0; countdownSecondsLeft = 0; document.getElementById('clicker').setAttribute( "onClick", "window.location.reload(true)" ) ; audio = 0;  document.getElementById("dyn").innerHTML = "—";   }, (240000 * mult));
 
   }, 5000);
   };
-  if(timeleft <= 0) {
-    clearInterval(downloadTimer);
+  if(countdownSecondsLeft <= 0) {
+    clearInterval(countdownTimer);
       var nam = "audio/"+(notes[(Math.floor(Math.random() * x)) + y])+".mp3";
         audio.src = nam;
        audio.play()
      document.getElementById("clicker").innerHTML = "Next";
-    var wn = [(Math.floor(Math.random() * (wr - wlo + wloinit) + wlo - wloinit)) % wordlist.length];
+    var wn = [(Math.floor(Math.random() * (wordRange- wordLowBounds + wordLowBoundsInitial) + wordLowBounds - wordLowBoundsInitial)) % wordlist.length];
     document.getElementById("demo").innerHTML = wordlist[wn]
     // uncomment next line forword debugging
- //  + " | " + wn + "/" + wr + " | " + nam + " | " + x +"/" + y 
+ //  + " | " + wn + "/" +wordRange+ " | " + nam + " | " + x +"/" + y
     ;
 
-       } else { document.getElementById("demo").innerHTML = timeleft; } }, 1000); };
+       } else { document.getElementById("demo").innerHTML = countdownSecondsLeft; } }, 1000); };
     function audioLaunch() {
-  
+
   audio.src = "click.mp3";
        audio.play(); }
 </script>
-  
-  
-  
 
-  
- 
-  
+
+
+
+
+
+
 </body>
 </html>

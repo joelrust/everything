@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <script src="js/jquery.js"></script>
   <script src="js/webpd-latest.js"></script>
-  
+
 <style>
 .wrapper {
     text-align: center; }
@@ -46,17 +46,17 @@ var cars = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", "
      // how many notes to use
    var y = 1;
    // word range
-   var wr = 25;
-   
- 
+   var wordRange = 25;
+
+
  function startText() {
   iter += 1;
-  var timeleft = ([Math.floor(Math.random() * tra) + tlo] * 1);
- document.getElementById("demo").innerHTML = timeleft;
- var downloadTimer = setInterval(function()
-{timeleft -= 1; document.getElementById("demo").innerHTML = timeleft;
+  var countdownSecondsLeft = ([Math.floor(Math.random() * tra) + tlo] * 1);
+ document.getElementById("demo").innerHTML = countdownSecondsLeft;
+ var countdownTimer = setInterval(function()
+{countdownSecondsLeft -= 1; document.getElementById("demo").innerHTML = countdownSecondsLeft;
   if(iter <= 1) {
-  setInterval(wr = wr * 1.147, 15000);
+  setInterval(wordRange = wordRange * 1.147, 15000);
   setTimeout(function(){ y = 2 }, 6000);
   setTimeout(function(){ y = 3; tra = 5 }, 12000);
   setTimeout(function(){ x = 2; y = 3 }, 24000);
@@ -67,15 +67,15 @@ var cars = ["the", "of", "and", "a", "in", "to", "it", "is", "was", "to", "i", "
   setTimeout(function(){ y = 4 }, 68000);
   setTimeout(function(){ x = 8; tra = 3 }, 80000);
   setTimeout(function(){ x = 11 }, 88000);
- 
-   setTimeout(function(){ document.getElementById("demo2").innerHTML = "mp" }, 90000);  
+
+   setTimeout(function(){ document.getElementById("demo2").innerHTML = "mp" }, 90000);
   };
-  if(timeleft <= 0) {
-    clearInterval(downloadTimer);
-    document.getElementById("demo").innerHTML = cars[Math.floor(Math.random() * wr)];
+  if(countdownSecondsLeft <= 0) {
+    clearInterval(countdownTimer);
+    document.getElementById("demo").innerHTML = cars[Math.floor(Math.random() * wordRange)];
         audio.src = notes[(Math.floor(Math.random() * y)) + x];
        audio.play()
-       
+
        } }, 1000); };
 </script>
 </body>

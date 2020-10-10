@@ -44,7 +44,7 @@
    var hi = 10;
    //floor of wait time in seconds:
    var lo = 5;
-   // which of notes to start from 
+   // which of notes to start from
    var y = 0;
      // how many notes to use
    var x = 1;
@@ -52,16 +52,16 @@
 
 
 
- var notes = ["61", 
-              "63", "61", 
-              "65", "63", "61", 
+ var notes = ["61",
+              "63", "61",
+              "65", "63", "61",
               "67", "65", "63", "61",
-              "68", "65", "63", 
+              "68", "65", "63",
               "68", "66", "65", "63",
-              "69", "66", "65", "63", 
+              "69", "66", "65", "63",
               "69", "68",
               "69", "68", "64", "62",
-              "69", "66", "64", "62", 
+              "69", "66", "64", "62",
               "69", "67", "66", "64",
               "67", "66", "64",
               "66", "64",
@@ -72,14 +72,14 @@
               "62", "72", "70", "69",
               "72", "70",
               "72", "70", "68",
-              "72", "70", "68", "66", 
+              "72", "70", "68", "66",
               ];
 
 
- function startText() {  document.getElementById("clicker").innerHTML = "wait"; var timeleft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = timeleft; 
-                       var downloadTimer = setInterval(function() {timeleft -= 1; 
+ function startText() {  document.getElementById("clicker").innerHTML = "wait"; var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = countdownSecondsLeft;
+                       var countdownTimer = setInterval(function() {countdownSecondsLeft -= 1;
   if(iter <= 0) { audio.src = "click.mp3";
-       audio.play(); iter += 1;  setInterval(function() {wr *= expo; wlo *= expo }, (15000 * mult));
+       audio.play(); iter += 1;  setInterval(function() {wordRange*= expo; wordLowBounds *= expo }, (15000 * mult));
    setTimeout(function(){
     setTimeout(function(){y += x; x = 2},  (8000 * mult));
     setTimeout(function(){y += x; x = 3}, (16000 * mult));
@@ -103,23 +103,23 @@
     setTimeout(function(){y += x; x = 2; hi = 5}, (130000 * mult));
     setTimeout(function(){y += x; x = 3; lo = 4; lo = 2}, (150000 * mult));
     setTimeout(function(){y += x; x = 4}, (166000 * mult));
-    setTimeout(function() {var e = document.getElementById("demo"); e.id = "fin"; document.getElementById("fin").innerHTML = "[stop]"; document.getElementById("clicker").innerHTML = "Reset"; downloadTimer = 0; timeleft = 0; document.getElementById('clicker').setAttribute( "onClick", "window.location.reload(true)" ) ; audio = 0;  document.getElementById("dyn").innerHTML = "—";   }, (180000 * mult));
-    
+    setTimeout(function() {var e = document.getElementById("demo"); e.id = "fin"; document.getElementById("fin").innerHTML = "[stop]"; document.getElementById("clicker").innerHTML = "Reset"; countdownTimer = 0; countdownSecondsLeft = 0; document.getElementById('clicker').setAttribute( "onClick", "window.location.reload(true)" ) ; audio = 0;  document.getElementById("dyn").innerHTML = "—";   }, (180000 * mult));
+
   }, 5000);
   };
-  if(timeleft <= 0) {
-    clearInterval(downloadTimer);
+  if(countdownSecondsLeft <= 0) {
+    clearInterval(countdownTimer);
       var nam = "audio/"+(notes[(Math.floor(Math.random() * x)) + y])+".mp3";
         audio.src = nam;
        audio.play()
      document.getElementById("clicker").innerHTML = "Next";
-    var wn = [(Math.floor(Math.random() * (wr - wlo + wloinit) + wlo - wloinit)) % wordlist.length];
+    var wn = [(Math.floor(Math.random() * (wordRange- wordLowBounds + wordLowBoundsInitial) + wordLowBounds - wordLowBoundsInitial)) % wordlist.length];
     document.getElementById("demo").innerHTML = wordlist[wn]
     // uncomment next line forword debugging
- //  + " | " + wn + "/" + wr + " | " + nam + " | " + x +"/" + y 
+ //  + " | " + wn + "/" +wordRange+ " | " + nam + " | " + x +"/" + y
     ;
 
-       } else { document.getElementById("demo").innerHTML = timeleft; } }, 1000); };
+       } else { document.getElementById("demo").innerHTML = countdownSecondsLeft; } }, 1000); };
 </script>
 </body>
 </html>
