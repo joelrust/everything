@@ -1,130 +1,52 @@
 <!doctype HTML>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>everything</title>
-  <meta name="description" content="">
-  <meta name="author" content="Joel Rust">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="skeleton.css">
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <script src="js/jquery.js"></script>
-  <script src="js/words.js"></script>
-     <script src="js/src.js"></script>
+    <head>
+        <title>everything</title>
 
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="author" content="Joel Rust">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-.wrapper {
-    text-align: center; }
-</style>
-</head>
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
 
-<header>
-<div class="wrapper">
-<h2><i><p id="dyn">p</p></i></h2></div>
-</header>
-<body>
-<div class="wrapper">
-<h1><p id="demo"><br></p></h1></div>
-<div class="wrapper">
-<button id="clicker" class="button-primary"  onclick="startText()">Start</button> </div>
-  <p></p>
-  <h1><p id="space"><br></p></h1></div>
-    <p></p>
-<div class="wrapper">
-<button id="clicker" class="button-primary"  onclick="audioLaunch()">(iOS only: Enable Audio)</button> </div>
+    </head>
 
-<script type="text/javascript">
-// has been checked as far as 'lancashire':
- var audio = new Audio();
- //how many times it's been pressed:
-   var iter = 0;
-//range of wait time in seconds:
-   var hi = 10;
-   //floor of wait time in seconds:
-   var lo = 5;
-   // which of notes to start from
-   var y = 0;
-     // how many notes to use
-   var x = 1;
-   // word range
+    <body>
+        <header>
+            <div class="wrapper">
+                <h2><i><p id="dyn">p</p></i></h2>
+            </div>
+        </header>
 
+        <div class="wrapper">
+            <h1><p id="demo"><br></p></h1>
+        </div>
+        <div class="wrapper">
+            <button id="startButton" class="button-primary">
+                Start
+            </button>
+        </div>
+        <p></p>
 
+        <div class="wrapper">
+            <h1><p id="space"><br></p></h1>
+        </div>
+        <p></p>
 
- var notes = ["61",
-              "61", "60",
-              "61", "60", "58",
-              "61", "58", "56",
-              "61", "59", "58", "56",
-              "61", "59", "56",
-              "61", "59", "57", "56",
-              "57", "56",
-              "62", "60", "57", "56",
-              "62", "60", "59", "57",
-              "64", "62", "60", "59",
-              // diverge
-              "64", "62", "59",
-              "62", "59",
-              "59",
-              "64", "59",
-              "65", "64",
-              "65", "64", "62",
-              "67", "65", "62",
-              "65", "63",
-              "66", "65", "63",
-              "68", "66", "65", "63",
+        <div class="wrapper">
+            <button id="audioButton" class="button-primary">
+                (iOS only: Enable Audio)
+            </button>
+        </div>
 
-              ];
-
-
- function startText() {  document.getElementById("clicker").innerHTML = "wait"; var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1); document.getElementById("demo").innerHTML = countdownSecondsLeft;
-                       var countdownTimer = setInterval(function() {countdownSecondsLeft -= 1;
-  if(iter <= 0) { audio.src = "click.mp3";
-       audio.play(); iter += 1;  setInterval(function() {wordRange*= expo; wordLowBounds *= expo }, (15000 * mult));
-  setTimeout(function(){
-    setTimeout(function(){y += x; x = 2},  (6000 * mult));
-    setTimeout(function(){y += x; x = 3}, (12000 * mult));
-    setTimeout(function(){y += x; x = 3}, (24000 * mult));
-    setTimeout(function(){y += x; x = 4; hi = 9}, (30000 * mult));
-    setTimeout(function(){y += x; x = 3}, (42000 * mult));
-    setTimeout(function(){y += x; x = 4; hi = 8; lo = 4}, (48000 * mult));
-    setTimeout(function(){y += x; x = 2}, (60000 * mult));
-    setTimeout(function(){y += x; x = 4}, (68000 * mult));
-    setTimeout(function(){y += x; x = 4; hi = 7}, (80000 * mult));
-    setTimeout(function(){y += x; x = 4}, (88000 * mult));
-    setTimeout(function(){hi = 6; lo = 3}, (90000 * mult));
-    setTimeout(function(){y += x; x = 3}, (93000 * mult));
-    setTimeout(function(){y += x; x = 2}, (99000 * mult));
-    setTimeout(function(){y += x; x = 1}, (105000 * mult));
-    setTimeout(function(){y += x; x = 2; document.getElementById("dyn").innerHTML = "mp" }, (113000 * mult));
-    setTimeout(function(){hi = 5}, (120000 * mult));
-    setTimeout(function(){y += x; x = 2}, (124000 * mult));
-    setTimeout(function(){y += x; x = 3; hi = 4; lo = 2}, (132000 * mult));
-    setTimeout(function(){y += x; x = 3;}, (144000 * mult));
-    setTimeout(function(){y += x; x = 2; hi = 3}, (150000 * mult));
-    setTimeout(function(){y += x; x = 3; lo = 1}, (166000 * mult));
-    setTimeout(function(){y += x; x = 4;}, (172000 * mult));
-    setTimeout(function() {var e = document.getElementById("demo"); e.id = "fin"; document.getElementById("fin").innerHTML = "[stop]"; document.getElementById("clicker").innerHTML = "Reset"; countdownTimer = 0; countdownSecondsLeft = 0; document.getElementById('clicker').setAttribute( "onClick", "window.location.reload(true)" ) ; audio = 0;  document.getElementById("dyn").innerHTML = "—";   }, (180000 * mult));
-
-
-  }, 5000);
-  };
-  if(countdownSecondsLeft <= 0) {
-    clearInterval(countdownTimer);
-      var nam = "audio/"+(notes[(Math.floor(Math.random() * x)) + y])+".mp3";
-        audio.src = nam;
-       audio.play()
-     document.getElementById("clicker").innerHTML = "Next";
-    var wn = [(Math.floor(Math.random() * (wordRange- wordLowBounds + wordLowBoundsInitial) + wordLowBounds - wordLowBoundsInitial)) % wordlist.length];
-    document.getElementById("demo").innerHTML = wordlist[wn]
-    // uncomment next line forword debugging
- //  + " | " + wn + "/" +wordRange+ " | " + nam + " | " + x +"/" + y
-    ;
-
-       } else { document.getElementById("demo").innerHTML = countdownSecondsLeft; } }, 1000); };
-</script>
-</body>
+        <script src="js/jquery.js"></script>
+        <script src="js/words.js"></script>
+        <script>const part = 'alto';</script>
+        <script src="js/src.js"></script>
+    </body>
 </html>
-
