@@ -32,8 +32,16 @@ var lo = 5;
 
 // pitch range
 
-
-
+const lengthSets = [
+    ["·"],          // 0
+    ["·","·","—"],  // 1
+    ["·","—","—"],  // 2
+    ["—"],          // 3
+    ["—","—","𝄐"],  // 4
+    ["—","𝄐","𝄐"],  // 5
+    ["𝄐"],          // 6
+    ["·","—","𝄐"],  // 7
+];
 
 const sopranoPitchSets = [
     ["61"],                     //0
@@ -190,13 +198,14 @@ const bassPitchSets = [
 ];
 
 let currentPitchSetIndex = 0;
+let currentLengthSetIndex = 3;
 
 function startPiece() {
     setInterval(
         function () { wordRange *= expo; wordLowBounds *= expo },
         (15 * mult)
     );
-
+    doLengthTimeouts();
     if (part === 'tenor') {
         doTenorTimeouts();
     } else if (part === 'bass') {
@@ -229,6 +238,11 @@ function playAudioChooseWord() {
     audio.play();
     document.getElementById("startButton").innerHTML = "Next";
 
+   const currentLengthSet = lengthSets[currentLengthSetIndex];
+
+    var ln = [Math.floor(Math.random() * currentLengthSet.length)];
+    document.getElementById("length").innerHTML = currentLengthSet[ln];
+    
     // choose the word and show it
     var wn = [( Math.floor(Math.random() * (wordRange - wordLowBounds + wordLowBoundsInitial)
         + wordLowBounds - wordLowBoundsInitial)) % wordlist.length
@@ -240,6 +254,8 @@ function playAudioChooseWord() {
 
 function startText() {
     document.getElementById("startButton").innerHTML = "wait";
+    document.getElementById("length").innerHTML = "&nbsp;";
+
     var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1);
     document.getElementById("demo").innerHTML = countdownSecondsLeft;
 
@@ -287,7 +303,25 @@ function audioLaunch() {
 //     }
 // }
 
-
+function doLengthTimeouts() {
+    setTimeout(function () {
+       setTimeout(function () { currentLengthSetIndex = 3 }, (0 * mult));
+       setTimeout(function () { currentLengthSetIndex = 2 }, (42 * mult));
+       setTimeout(function () { currentLengthSetIndex = 1 }, (76 * mult));
+       setTimeout(function () { currentLengthSetIndex = 2 }, (90 * mult));
+       setTimeout(function () { currentLengthSetIndex = 3 }, (102 * mult));
+       setTimeout(function () { currentLengthSetIndex = 4 }, (120 * mult));
+       setTimeout(function () { currentLengthSetIndex = 7 }, (144 * mult));
+       setTimeout(function () { currentLengthSetIndex = 3 }, (180 * mult));
+       setTimeout(function () { currentLengthSetIndex = 0 }, (248 * mult));
+       setTimeout(function () { currentLengthSetIndex = 1 }, (254 * mult));
+       setTimeout(function () { currentLengthSetIndex = 2 }, (264 * mult));
+       setTimeout(function () { currentLengthSetIndex = 3 }, (276 * mult));
+       setTimeout(function () { currentLengthSetIndex = 4 }, (286 * mult));
+       setTimeout(function () { currentLengthSetIndex = 5 }, (300 * mult));
+       setTimeout(function () { currentLengthSetIndex = 6 }, (316 * mult));
+    }, 5000);
+}    
 
 function doSopranoTimeouts() {
     setTimeout(function () {
@@ -442,6 +476,7 @@ function doAltoTimeouts() {
 
 function doTenorTimeouts() {
     setTimeout(function () {
+
         setTimeout(function () { currentPitchSetIndex = 1 }, (8 * mult));
         setTimeout(function () { currentPitchSetIndex = 2 }, (16 * mult));
         setTimeout(function () { currentPitchSetIndex = 3}, (28 * mult));
