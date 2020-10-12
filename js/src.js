@@ -100,16 +100,21 @@ const altoPitchSets = [
     ["65", "63"],                   // 18
     ["66", "65", "63"],
     ["68", "66", "65", "63"],       // 20
+    ["73"],
     ["65", "67", "69", "71"],
-    ["65", "67", "69", "70", "72"], // 22
-    ["64", "66", "68", "70", "71"], 
-    ["65", "60"],                   // 24
+    ["73"],
+    ["65", "67", "69", "70", "72"], // 24
+    ["73"],
+    ["64", "66", "68", "70", "71"], // 26
+    ["73", "74"],
+    ["74"],
+    ["65", "60"],                   // 29
     ["60"],
-    ["60", "61"],                   // 26
+    ["60", "61"],                   // 31
     ["60", "63"],
-    ["60", "62"],                   // 28
+    ["60", "62"],                   // 33
     ["60", "64"],
-    ["62h", "65h"],                 // 30
+    ["62h", "65h"],                 // 35
     ["67h", "69h", "71h"]
 ];
 
@@ -315,8 +320,8 @@ function doSopranoTimeouts() {
         setTimeout(function () { document.getElementById("dyn").innerHTML = "f"}, (222 * mult));
         setTimeout(function () { currentPitchSetIndex = 21 }, (232 * mult));
         setTimeout(function () { currentPitchSetIndex = 22 }, (236 * mult));
-        setTimeout(function () { currentPitchSetIndex = 23 }, (240 * mult));
-        setTimeout(function () { currentPitchSetIndex = 24 }, (244 * mult));
+        // 23 not in use
+        setTimeout(function () { currentPitchSetIndex = 24 }, (240 * mult));
         setTimeout(function () { currentPitchSetIndex = 25 }, (248 * mult));
         setTimeout(function () { currentPitchSetIndex = 26 }, (254 * mult));
         setTimeout(function () { hi = 6; lo = 6 }, (260 * mult));
@@ -379,69 +384,43 @@ function doAltoTimeouts() {
         setTimeout(function () { currentPitchSetIndex = 18; hi = 3}, (150 * mult));
         setTimeout(function () { currentPitchSetIndex = 19; lo = 1}, (166 * mult));
         setTimeout(function () { currentPitchSetIndex = 20; }, (172 * mult));        
-        setTimeout(function () { currentPitchSetIndex = 21; hi = 18; lo = 18}, (180 * mult));
-        setTimeout(function () { hi = 17;lo = 17}, (181 * mult));
-        setTimeout(function () { hi = 15;lo = 15}, (182 * mult));
-        setTimeout(function () { hi = 14;lo = 14}, (183 * mult));
-        setTimeout(function () { hi = 12;lo = 12}, (184 * mult));
-        setTimeout(function () { hi = 11;lo = 11}, (185 * mult));
-        setTimeout(function () { hi = 9; lo = 9 }, (186 * mult));
-        setTimeout(function () { hi = 8; lo = 8 }, (187 * mult));
-        setTimeout(function () { hi = 6; lo = 6 }, (188 * mult));
-        setTimeout(function () { hi = 5; lo = 5 }, (189 * mult));
+        setTimeout(function () { currentPitchSetIndex = 21}, (180 * mult));
+        setTimeout(function () { hi = 4; lo = 4 }, (189.34 * mult));        
         setTimeout(function () { hi = 3; lo = 3 }, (190 * mult));
-        setTimeout(function () { hi = 2; lo = 2 }, (191 * mult));
-        setTimeout(function () { hi = 27;lo = 27}, (192 * mult));
-        setTimeout(function () { hi = 26;lo = 26}, (193 * mult));
-        setTimeout(function () { hi = 24;lo = 24}, (194 * mult));
-        setTimeout(function () { hi = 23;lo = 23}, (195 * mult));
-        setTimeout(function () { hi = 21;lo = 21}, (196 * mult));
-        setTimeout(function () { hi = 20;lo = 20}, (197 * mult));
-        setTimeout(function () { currentPitchSetIndex = 22; hi = 18; lo = 18}, (198 * mult));
-        setTimeout(function () { hi = 17;lo = 17}, (199 * mult));
-        setTimeout(function () { hi = 15;lo = 15}, (200 * mult));
-        setTimeout(function () { hi = 14;lo = 14}, (201 * mult));
-        setTimeout(function () { hi = 12;lo = 12}, (202 * mult));
-        setTimeout(function () { hi = 11;lo = 11}, (203 * mult));
-        setTimeout(function () { hi = 9; lo = 9 }, (204 * mult));
-        setTimeout(function () { hi = 8; lo = 8 }, (205 * mult));
-        setTimeout(function () { hi = 6; lo = 6 }, (206 * mult));
-        setTimeout(function () { hi = 5; lo = 5 }, (207 * mult));
+        setTimeout(function () { hi = 2; lo = 2 }, (190.66 * mult));
+        setTimeout(function () { hi = 1; lo = 1 }, (191.34 * mult));
+        setTimeout(function () {currentPitchSetIndex = 22}, (192 * mult));
+        setTimeout(function () { currentPitchSetIndex = 23; hi = 3;lo = 1}, (196 * mult));
+        setTimeout(function () { hi = 4; lo = 4 }, (207.34 * mult));        
         setTimeout(function () { hi = 3; lo = 3 }, (208 * mult));
-        setTimeout(function () { hi = 2; lo = 2 }, (209 * mult));
-        setTimeout(function () { document.getElementById("dyn").innerHTML = "mf"}, (210 * mult));
-        setTimeout(function () { currentPitchSetIndex = 23; hi = 18;lo = 18 }, (218 * mult));
-        setTimeout(function () { hi = 17;lo = 17}, (219 * mult));
-        setTimeout(function () { hi = 15;lo = 15}, (220 * mult));
-        setTimeout(function () { hi = 14;lo = 14}, (221 * mult));
-        setTimeout(function () { hi = 12;lo = 12}, (222 * mult));
-        setTimeout(function () { hi = 11;lo = 11}, (223 * mult));
-        setTimeout(function () { hi = 9; lo = 9 }, (224 * mult));
-        setTimeout(function () { hi = 8; lo = 8 }, (225 * mult));
-        setTimeout(function () { hi = 6; lo = 6 }, (226 * mult));
-        setTimeout(function () { hi = 5; lo = 5 }, (227 * mult));
+        setTimeout(function () { hi = 2; lo = 2 }, (208.66 * mult));
+        setTimeout(function () { hi = 1; lo = 1 }, (209.34 * mult));
+        setTimeout(function () { currentPitchSetIndex = 24; document.getElementById("dyn").innerHTML = "mf"}, (210 * mult));
+        setTimeout(function () { currentPitchSetIndex = 25; hi = 3;lo = 1 }, (216 * mult));
+        setTimeout(function () { hi = 4; lo = 4 }, (227.34 * mult));        
         setTimeout(function () { hi = 3; lo = 3 }, (228 * mult));
-        setTimeout(function () { hi = 2; lo = 2 }, (229 * mult));
-        setTimeout(function () { document.getElementById("dyn").innerHTML = "f"}, (230 * mult));
-        setTimeout(function () { hi = 12;lo = 12}, (240 * mult));
-        setTimeout(function () { hi = 11;lo = 11}, (241 * mult));
-        setTimeout(function () { hi = 9; lo = 9 }, (242 * mult));
-        setTimeout(function () { hi = 8; lo = 8 }, (243 * mult));
-        setTimeout(function () { hi = 6; lo = 6 }, (244 * mult));
-        setTimeout(function () { hi = 5; lo = 5 }, (245 * mult));
+        setTimeout(function () { hi = 2; lo = 2 }, (228.66 * mult));
+        setTimeout(function () { hi = 1; lo = 1 }, (229.34 * mult));        
+        setTimeout(function () { hi = 2; lo = 1; currentPitchSetIndex = 26; document.getElementById("dyn").innerHTML = "f"}, (230 * mult));
+        setTimeout(function () {currentPitchSetIndex = 27}, (238 * mult));
+        setTimeout(function () {currentPitchSetIndex = 28}, (240 * mult));
+        setTimeout(function () { hi = 6; lo = 6 }, (244 * mult));        
+        setTimeout(function () { hi = 5; lo = 5 }, (244.66 * mult));
+        setTimeout(function () { hi = 4; lo = 4 }, (245.34 * mult));        
         setTimeout(function () { hi = 3; lo = 3 }, (246 * mult));
-        setTimeout(function () { hi = 2; lo = 2 }, (247 * mult));
-        setTimeout(function () { currentPitchSetIndex = 24; hi = 4;lo = 2 }, (248 * mult));
-        setTimeout(function () { currentPitchSetIndex = 25; hi = 5;lo = 3 }, (256 * mult));
+        setTimeout(function () { hi = 2; lo = 2 }, (246.66 * mult));
+        setTimeout(function () { hi = 1; lo = 1 }, (247.34 * mult));  
+        setTimeout(function () { currentPitchSetIndex = 29; hi = 4;lo = 2 }, (248 * mult));
+        setTimeout(function () { currentPitchSetIndex = 30; hi = 5;lo = 3 }, (256 * mult));
         setTimeout(function () { hi = 6;lo =  4; document.getElementById("dyn").innerHTML = "mf"}, (270 * mult));
-        setTimeout(function () { currentPitchSetIndex = 26}, (276 * mult));
-        setTimeout(function () { currentPitchSetIndex = 27;hi = 7;lo =  5; document.getElementById("dyn").innerHTML = "mp"}, (282 * mult));
-        setTimeout(function () { currentPitchSetIndex = 28;hi = 8;lo =  5; document.getElementById("dyn").innerHTML = "p"}, (290 * mult));
+        setTimeout(function () { currentPitchSetIndex = 31}, (276 * mult));
+        setTimeout(function () { currentPitchSetIndex = 32;hi = 7;lo =  5; document.getElementById("dyn").innerHTML = "mp"}, (282 * mult));
+        setTimeout(function () { currentPitchSetIndex = 33;hi = 8;lo =  5; document.getElementById("dyn").innerHTML = "p"}, (290 * mult));
         setTimeout(function () { hi = 8;lo =  6; document.getElementById("dyn").innerHTML = "pp"}, (298 * mult));
-        setTimeout(function () { currentPitchSetIndex = 29;}, (303 * mult));
-        setTimeout(function () { currentPitchSetIndex = 30;hi = 7;lo =  5; document.getElementById("dyn").innerHTML = "p"}, (312 * mult));
+        setTimeout(function () { currentPitchSetIndex = 34;}, (303 * mult));
+        setTimeout(function () { currentPitchSetIndex = 35;hi = 7;lo =  5; document.getElementById("dyn").innerHTML = "p"}, (312 * mult));
         setTimeout(function () { hi = 6;lo =  4; document.getElementById("dyn").innerHTML = "mp"}, (324 * mult));
-        setTimeout(function () { currentPitchSetIndex = 31;hi = 5;lo =  3; document.getElementById("dyn").innerHTML = "mf"}, (332 * mult));
+        setTimeout(function () { currentPitchSetIndex = 36;hi = 5;lo =  3; document.getElementById("dyn").innerHTML = "mf"}, (332 * mult));
         setTimeout(function () { hi = 4;lo =  2; document.getElementById("dyn").innerHTML = "f"}, (342 * mult));
         setTimeout(function () { hi = 3;lo =  1; document.getElementById("dyn").innerHTML = "ff"}, (350 * mult));
     
