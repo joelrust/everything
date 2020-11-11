@@ -1,11 +1,11 @@
 /*
  * Constant, tunable params
  */
-var mult = 1500;
+var mult = 150;
 var wordRange = 25;
-var wordLowBoundsInitial = 10;
+var wordLowBoundsInitial = 25;
 var wordLowBounds = wordLowBoundsInitial;
-var expo = 1.25;
+var expo = 1.12;
 
 // Set up click handlers
 const startButton = document.querySelector("#startButton");
@@ -42,6 +42,8 @@ const lengthSets = [
     ["𝄐"],          // 6
     ["·","—","𝄐"],  // 7
 ];
+
+
 
 const sopranoPitchSets = [
     ["61"],                     //0
@@ -203,7 +205,7 @@ let currentLengthSetIndex = 3;
 function startPiece() {
     setInterval(
         function () { wordRange *= expo; wordLowBounds *= expo },
-        (15 * mult)
+        (6.66 * mult)
     );
     doLengthTimeouts();
     if (part === 'tenor') {
