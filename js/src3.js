@@ -45,7 +45,10 @@ const dynamicSet = ["pp", "p", "mp", "mf", "f", "ff"];
 var currentDynamic = dynamicSet[0];
 // hi lo len dyn
 const setSettings = [
-	[3, 3, 6, 1, 0],
+
+
+
+[3, 3, 6, 1, 0],
 [3, 4, 6, 1, 0],
 [0],
 [0],
@@ -79,8 +82,8 @@ const setSettings = [
 [0],
 [0],
 [0],
-[3, 6, 6, 1, 0],
-[0],
+[1],   	// 0
+[1],	// 1
 [3, 5, 6, 1, 0],
 [0],
 [3, 4, 5, 2, 0],
@@ -104,13 +107,53 @@ const setSettings = [
 [0]
 ];
 
+var currentSettingsIndex = 0;
 
+const sopranoOverrideSettings = [
+[3, 6, 6, 1, 0],
+[3, 6, 6, 1, 0],	
+	
+]
+
+const altoOverrideSettings = [
+[3, 6, 6, 1, 0],
+[3, 6, 6, 1, 0],	
+	
+]
+
+const tenorOverrideSettings = [
+[10, 10, 6, 1, 0],
+[5, 5, 6, 1, 0],
+
+	
+]
+
+const bassOverrideSettings = [
+[10, 10, 6, 1, 0],
+[5, 5, 6, 1, 0],	
+	
+]
+
+let overrideSettings;
+	if (part === 'tenor') {
+		overrideSettings = tenorOverrideSettings;
+	} else if (part === 'bass') {
+		overrideSettings = bassOverrideSettings;
+	} else if (part === 'alto') {
+		overrideSettings = altoOverrideSettings;
+	} else if (part === 'soprano') {
+		overrideSettings = sopranoOverrideSettings;
+	}
+
+var currentOverrideSettingsIndex = 0;
+
+var currentOverrideSettings = overrideSettings[currentOverrideSettingsIndex];
 
 var currentPitchSetIndex = 0;
 
 var currentSettingsIndex = 0;
 
-				var currentSettings = setSettings[currentSettingsIndex];
+var currentSettings = setSettings[currentSettingsIndex];
 
 
 var lo =  currentSettings[0];
@@ -386,43 +429,43 @@ function startPiece() {
 		(10000)
 	);
 	setInterval(
-		        function nextSet() {
-            //code
+		function nextSet() {
+  		
+			currentSettingsIndex += 1;
+			
+			currentSettings = setSettings[currentSettingsIndex];
+			
+			if (currentSettings != 0 ) {
+				
+				if (currentSettings == 1 ) {
+                    
+					currentSettings = overrideSettings[currentOverrideSettingsIndex];
+					currentOverrideSettingsIndex += 1;
 
+                }
+				
+				lo =  currentSettings[0];
+				
+				hi = currentSettings[1];
+				
+				currentLengthSetIndex = currentSettings[2];
+				
+				currentDynamicIndex = currentSettings[3];
+				
+				currentLengthSet = lengthSets[currentLengthSetIndex];
+				
+				currentDynamic = dynamicSet[currentDynamicIndex]
+	
+			}		
+	
+		currentPitchSetIndex = currentSettingsIndex;				
 
-                //code
-            		
-currentSettingsIndex += 1;
-
-currentSettings = setSettings[currentSettingsIndex];
-
-if (currentSettings != 0 ) {
-    
-lo =  currentSettings[0];
-
-hi = currentSettings[1];
-
-currentLengthSetIndex = currentSettings[2];
-
-currentDynamicIndex = currentSettings[3];
-
-currentLengthSet = lengthSets[currentLengthSetIndex];
-
-currentDynamic = dynamicSet[currentDynamicIndex]
-
-
-}
-	currentPitchSetIndex = currentSettingsIndex;				
-					
-					
-					
-		 //           }
-		 //         , (setSettings[currentSettingsIndex[4]] * mult));
-		    },
+		},
 		
 		(5000)
 	);    
 	doLengthTimeouts();
+
 }
 
 
