@@ -3,7 +3,7 @@
  */
 const mult = 1000;
 let wordRange = 25;
-const wordLowBoundsInitial = 24;
+const wordLowBoundsInitial = 15;
 let wordLowBounds = wordLowBoundsInitial;
 const expo = 1.12;
 
@@ -812,16 +812,17 @@ function playAudioChooseWord() {
 	document.getElementById("length").innerHTML = currentLengthSet[ln];
 	
 	// choose the word and show it
-	var wn = [( Math.floor(Math.random() * (wordRange - wordLowBounds + wordLowBoundsInitial)
+	var wn = [( Math.floor(Math.random() * (wordRange)
 		+ wordLowBounds - wordLowBoundsInitial)) % wordlist.length
 	];
 	document.getElementById("demo").innerHTML = wordlist[wn];
 	
-	document.getElementById("dyn").innerHTML = currentDynamic;
+	document.getElementById("dyn").innerHTML = currentDynamic
 	
 	
 	// uncomment next line for word debugging
 	//  + " | " + wn + "/" + wordRange + " | " + nam + " | " + x +"/" + y
+	  ;
 }
 
 
