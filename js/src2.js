@@ -1,30 +1,18 @@
-/*
- * Constant, tunable params
- */
 var mult = 1200;
-
 
 // Set up click handlers
 const startButton = document.querySelector("#startButton");
 startButton.onclick = startText;
 
-
-const audioButton = document.querySelector("#audioButton");
-audioButton.onclick = audioLaunch;
-
 var audio = new Audio();
 
 var isFirstClick = true;
 
-//range of wait time in seconds:
+//ceiling of wait time in seconds:
 var hi = 3;
 
 //floor of wait time in seconds:
 var lo = 2;
-
-// pitch range
-
-
 
 const wordList= ["In", "this", "short", "Life", "that", "only", "lasts", "an", "hour",
 "How", "much", "how", "little", "is", "within", "our", "power"];
@@ -38,7 +26,6 @@ const sopranoPitchSets = [
     ["64"],                //5
     ];
 
-
 const altoPitchSets = [
     ["64", "60", "60"],    //0
     ["62", "66"],          //1
@@ -48,7 +35,6 @@ const altoPitchSets = [
     ["61", "61", "64"],    //5
 
 ];
-
 
 const tenorPitchSets = [
     ["57", "60", "60"],    //0
@@ -75,12 +61,8 @@ let currentPitchSetIndex = 0;
 
 function startPiece() {
    
-   
     wordChanges();
     voiceTimeouts()
-    
-   
-
 }
    
    var wordRange = 2;
@@ -107,12 +89,11 @@ function wordChanges() {
 }
 
 function voiceTimeouts() {
-   setTimeout(function () { currentPitchSetIndex = 1 }, (24 * mult));
-   setTimeout(function () { currentPitchSetIndex = 2 }, (36 * mult));
+   setTimeout(function () { currentPitchSetIndex = 1; hi = 5; lo = 3 }, (24 * mult));
+   setTimeout(function () { currentPitchSetIndex = 2; hi = 3; lo = 2 }, (36 * mult));
    setTimeout(function () { currentPitchSetIndex = 3 }, (54 * mult));
-   setTimeout(function () { currentPitchSetIndex = 4 }, (66 * mult));
-   setTimeout(function () { currentPitchSetIndex = 5 }, (78 * mult));
-
+   setTimeout(function () { currentPitchSetIndex = 4; hi = 4; lo = 3 }, (66 * mult));
+   setTimeout(function () { currentPitchSetIndex = 5; hi = 3; lo = 2 }, (78 * mult));
    setTimeout( function () {
                 var e = document.getElementById("demo");
                 e.id = "fin";
@@ -125,8 +106,6 @@ function voiceTimeouts() {
             },
             (90 * mult)
         );
-   
-   //; lo = 5; hi = 9
 }
 
 function playAudioChooseWord() {
@@ -149,13 +128,9 @@ function playAudioChooseWord() {
     audio.play();
     document.getElementById("startButton").innerHTML = "Next";
 
-
-    
     // choose the word and show it
     var wn = [( Math.floor(Math.random() * wordRange ) + wordLowBound ) ];
     document.getElementById("demo").innerHTML = wordList[wn];
-    // uncomment next line for word debugging
-    //  + " | " + wn + "/" + wordRange + " | " + nam + " | " + x +"/" + y
 }
 
 function startText() {
@@ -165,6 +140,8 @@ function startText() {
     document.getElementById("demo").innerHTML = countdownSecondsLeft;
 
     if (isFirstClick) {
+        audioLaunch();
+
         // Set off all of the initial timing based stuff on first click only
         isFirstClick = false;
         startPiece();
