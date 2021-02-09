@@ -70,6 +70,19 @@
 					<key>promptMessage</key>
 					<string>Choose a Finder Item:</string>
 				</dict>
+				<key>ActionRuntimeParameters</key>
+				<dict>
+					<key>defaultLocation</key>
+					<string>/Users/joel/Desktop</string>
+					<key>granularity</key>
+					<integer>0</integer>
+					<key>multipleSelection</key>
+					<true/>
+					<key>promptMessage</key>
+					<string>Choose a Finder Item:</string>
+					<key>temporary items path</key>
+					<string>/var/folders/qx/zt9wyq697gvdyryn5596l3_r0000gn/T/08CEB017-652C-4C26-B13D-B1677F85A423/1/com.apple.Automator.AskForFinderItems</string>
+				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.AskForFinderItems</string>
 				<key>CFBundleVersion</key>
@@ -159,8 +172,6 @@
 						<string>3</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -230,6 +241,19 @@
 					<string>~/Desktop</string>
 					<key>encoderIndicator</key>
 					<integer>0</integer>
+					<key>useSameFolderAsSource</key>
+					<true/>
+				</dict>
+				<key>ActionRuntimeParameters</key>
+				<dict>
+					<key>deleteSourceFiles</key>
+					<false/>
+					<key>destinationFolderPath</key>
+					<string>/Users/joel/Desktop</string>
+					<key>encoderIndicator</key>
+					<integer>0</integer>
+					<key>temporary items path</key>
+					<string>/var/folders/qx/zt9wyq697gvdyryn5596l3_r0000gn/T/08CEB017-652C-4C26-B13D-B1677F85A423/1/com.apple.QuickTime.Automator.Encode_to_MPEG_Audio</string>
 					<key>useSameFolderAsSource</key>
 					<true/>
 				</dict>
@@ -314,8 +338,6 @@
 						<string>3</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -329,7 +351,7 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>6D2B0572-844E-4BA1-A4B1-96F98B37C7FA</key>
+		<key>159C1017-762C-43DC-B8B6-8B250C9FF882</key>
 		<dict>
 			<key>from</key>
 			<string>BBA7C82C-23FF-42AD-930E-66AE03B6C4B2 - BBA7C82C-23FF-42AD-930E-66AE03B6C4B2</string>

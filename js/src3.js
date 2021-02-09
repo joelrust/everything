@@ -803,8 +803,17 @@ function startText() {
 };
 
 function audioLaunch() {
-	audio.src = "click.mp3";
-	audio.play();
+ 
+ let volume = document.querySelector("#volu");
+
+ volume.addEventListener("change", function(e) {
+audio.volume = e.currentTarget.value / 64;
+});
+
+ 
+    audio.src = "click.mp3";
+
+    audio.play();
 }
 
 
