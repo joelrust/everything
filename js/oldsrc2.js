@@ -1,4 +1,4 @@
-var mult = 1300;
+var mult = 1200;
 
 // Set up click handlers
 const startButton = document.querySelector("#startButton");
@@ -9,7 +9,7 @@ var audio = new Audio();
 var isFirstClick = true;
 
 //ceiling of wait time in seconds:
-var hi = 2;
+var hi = 3;
 
 //floor of wait time in seconds:
 var lo = 2;
@@ -65,41 +65,35 @@ function startPiece() {
     voiceTimeouts()
 }
    
-   var wordRange = 1;
+   var wordRange = 2;
    var wordLowBound = 0;
-   const wordInterval = 4.85;
+   const wordInterval = 4.9;
 function wordChanges() {
-   setTimeout(function () { wordLowBound = 1; }, (1 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 2; }, (2 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 3; }, (3 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 4; }, (4 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 5; }, (5 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 6; }, (6 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 7; }, (7 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 8; }, (8 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 9; }, (10 * wordInterval * mult));   //48.5
-   setTimeout(function () { wordLowBound = 10; }, (11 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 11; }, (12 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 12; }, (13 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 13; }, (14 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 14; }, (15 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 15; }, (16 * wordInterval * mult));
-   setTimeout(function () { wordLowBound = 16; }, (17 * wordInterval * mult));
-//   setTimeout(function () { wordLowBound = 1; },    (17 * wordInterval * mult));   
+   setTimeout(function () { wordRange = 3; },    (1 * wordInterval * mult));
+   setTimeout(function () { wordRange = 4; },    (2 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 1; }, (3 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 2; }, (4 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 3; }, (5 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 4; }, (6 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 5; }, (7 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 6; }, (8 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 7; }, (9 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 8; }, (10 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 9; }, (11 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 10; }, (12 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 11; }, (13 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 12; }, (14 * wordInterval * mult));
+   setTimeout(function () { wordLowBound = 13; }, (15 * wordInterval * mult));
+   setTimeout(function () { wordRange = 3; },    (16 * wordInterval * mult));
+   setTimeout(function () { wordRange = 2; },    (17 * wordInterval * mult));   
 }
 
 function voiceTimeouts() {
-   setTimeout(function () { currentPitchSetIndex = 1; hi = 3; lo = 3 }, (24 * mult));
-   setTimeout(function () { currentPitchSetIndex = 2; hi = 1; lo = 1 }, (36 * mult));
-   setTimeout(function () { hi = 8; lo = 8 }, (43.5 * mult));
-   setTimeout(function () { hi = 7; lo = 7 }, (44.5 * mult));
-   setTimeout(function () { hi = 5; lo = 5 }, (45.5 * mult));
-   setTimeout(function () { hi = 4; lo = 4 }, (46.5 * mult));   
-   setTimeout(function () { hi = 3; lo = 3 }, (47.5 * mult));   
-   setTimeout(function () { hi = 2; lo = 2 }, (48.5 * mult));
+   setTimeout(function () { currentPitchSetIndex = 1; hi = 5; lo = 3 }, (24 * mult));
+   setTimeout(function () { currentPitchSetIndex = 2; hi = 3; lo = 2 }, (36 * mult));
    setTimeout(function () { currentPitchSetIndex = 3 }, (54 * mult));
-   setTimeout(function () { currentPitchSetIndex = 4; hi = 3; lo = 3 }, (66 * mult));
-   setTimeout(function () { currentPitchSetIndex = 5; hi = 2; lo = 2 }, (80 * mult));
+   setTimeout(function () { currentPitchSetIndex = 4; hi = 4; lo = 3 }, (66 * mult));
+   setTimeout(function () { currentPitchSetIndex = 5; hi = 3; lo = 2 }, (78 * mult));
    setTimeout( function () {
                 var e = document.getElementById("demo");
                 e.id = "fin";
@@ -144,10 +138,7 @@ function startText() {
 
     var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1);
     document.getElementById("demo").innerHTML = countdownSecondsLeft;
-    //next two lines to test
-   //                   var debugTimer = ((countdownSecondsLeft + 3) * 1000);
-     //                 setTimeout(startText, debugTimer);
-    // end of test
+
     if (isFirstClick) {
         audioLaunch();
 
@@ -187,3 +178,12 @@ audio.volume = e.currentTarget.value / 64;
 
     audio.play();
 }
+
+
+
+
+
+
+ 
+
+

@@ -648,8 +648,8 @@ const bassPitchSets = [
 	["45", "45", "52"],
 	["45", "45", "52"],
 	["45", "45", "52"],
-	["45", "45", "52"],
-	["45", "45", "52"],
+	["45", "46"],
+	["45", "46"],
 	["45", "45", "52"],
 	["45", "45", "52"],
 	["58", "60"],
@@ -773,7 +773,7 @@ function startText() {
 	document.getElementById("startButton").innerHTML = "wait";
 	document.getElementById("length").innerHTML = "&nbsp;";
 	document.getElementById("dyn").innerHTML = "&nbsp;";
-	
+
 	if (isFirstClick) {
 		audioLaunch();
 		// Set off all of the initial timing based stuff on first click only
@@ -784,7 +784,10 @@ function startText() {
 	let countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1);
 
 		document.getElementById("demo").innerHTML = countdownSecondsLeft;
-
+	    //next two lines to test
+           //           var debugTimer = ((countdownSecondsLeft + 3) * 1000);
+           //           setTimeout(startText, debugTimer);
+    // end of test
 	
 	var countdownTimer = setInterval(
 		function() {
