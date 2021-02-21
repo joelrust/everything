@@ -785,8 +785,8 @@ function startText() {
 
 		document.getElementById("demo").innerHTML = countdownSecondsLeft;
 	    //next two lines to test
-                      var debugTimer = ((countdownSecondsLeft + 3) * 1000);
-                      setTimeout(startText, debugTimer);
+               //       var debugTimer = ((countdownSecondsLeft + 3) * 1000);
+              //        setTimeout(startText, debugTimer);
     // end of test
 	
 	var countdownTimer = setInterval(
@@ -824,7 +824,7 @@ audio.volume = e.currentTarget.value / 64;
 	var e = document.getElementById("demo");
 	e.id = "fin";
 	document.getElementById("fin").innerHTML = "[stop]";
-	document.getElementById("startButton").innerHTML = "Reset";
+	setTimeout(function(){ document.getElementById("startButton").innerHTML = "Reset" }, 1000);
 	countdownTimer = 0;
 	countdownSecondsLeft = 0;
 	document.getElementById('startButton').setAttribute("onClick", "window.location.reload(true)");
