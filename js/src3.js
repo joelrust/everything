@@ -21,16 +21,21 @@ var audio = new Audio();
 var isFirstClick = true;
 
 const lengthSets = [
-	["·"],              // 0
-	["·","·",".","—"],  // 1
-	["·",".","—"],      // 2
-	["·","—"],          // 3
-	["·","—","—"],      // 4
-	["·","—","—","—"],  // 5
+	["◡"],              // 0
+	["◡","◡","◡","—"],  // 1
+	["◡","◡","—"],      // 2
+	["◡","—"],          // 3
+	["◡","—","—"],      // 4
+	["◡","—","—","—"],  // 5
 	["—"],              // 6
 ];
 
-const dynamicSet = ["pp", "p", "mp", "mf", "f", "ff"];
+var dynamicSet = ["<i>pp</i>", "<i>p</i>", "<i>mp</i>", "<i>mf</i>", "<i>f</i>", "<i>ff</i>"];
+
+const dynamicSymbols = ["|⎽|", "|⎼|", "|–|", "|–|", "|⎻|", "|⎺|"];
+
+const dynamicLetters = ["<i>pp</i>", "<i>p</i>", "<i>mp</i>", "<i>mf</i>", "<i>f</i>", "<i>ff</i>"];
+
 
 var currentDynamic = dynamicSet[0];
 // hi lo len dyn ?
@@ -768,8 +773,10 @@ function playAudioChooseWord() {
 	document.getElementById("dyn").innerHTML = currentDynamic;
 }
 
+var isCountdown = 1;
 
 function startText() {
+	isCountdown = 1;
 	document.getElementById("startButton").innerHTML = "wait";
 	document.getElementById("length").innerHTML = "&nbsp;";
 	document.getElementById("dyn").innerHTML = "&nbsp;";
@@ -793,6 +800,7 @@ function startText() {
 		function() {
 			countdownSecondsLeft -= 1;
 			if (countdownSecondsLeft <= 0) {
+				isCountdown = 0;
 				// Stop the countdown, and play the audio
 				playAudioChooseWord();
 				clearInterval(countdownTimer);
@@ -831,3 +839,24 @@ audio.volume = e.currentTarget.value / 64;
 	audio = 0;
 	document.getElementById("dyn").innerHTML = "—";
 }
+
+
+
+    var input = document.getElementById('toggleswitch');
+    var outputtext = document.getElementById('status');
+
+    input.addEventListener('change',function(){
+        if(this.checked) {
+           dynamicSet = dynamicSymbols;
+		   
+        } else {
+            dynamicSet = dynamicLetters;
+			
+        };
+		currentDynamic = dynamicSet[currentDynamicIndex];
+		if (isCountdown == 0) {
+			
+		document.getElementById("dyn").innerHTML = currentDynamic;	
+			}
+		
+    });
