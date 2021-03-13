@@ -599,8 +599,11 @@ input:checked + .roundbutton:before  {
 
 div.ex2 {
   max-width: 500px;
+    height: 170px;
+
   margin: auto;
    text-align: justify;
   text-justify: inter-word;
 
 }
+
