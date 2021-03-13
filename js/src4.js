@@ -33,7 +33,8 @@ const demoSets = [
 	["60", "oyster", "◡", 3, 4, "Each singer has their own part, which is randomly generated; it’s OK if you’re moving faster or slower than others, or if there are notes you don’t sing. Everyone will, at the same time, get the message [stop]. If you’re singing, finish the word you’re on. Then, the piece is over. Until then, practice with a few more words!" ],
 	["61", "treadmill", "—", 4, 5, "Each singer has their own part, which is randomly generated; it’s OK if you’re moving faster or slower than others, or if there are notes you don’t sing. Everyone will, at the same time, get the message [stop]. If you’re singing, finish the word you’re on. Then, the piece is over. Until then, practice with a few more words!" ],
 	["60", "spanner", "◡", 2, 3, "Each singer has their own part, which is randomly generated; it’s OK if you’re moving faster or slower than others, or if there are some you don’t sing. Everyone will, at the same time, get the message [stop]. If you’re singing, finish the word you’re on. Then, the piece is over. Until then, practice with a few more words!" ],
-	
+	["60", "flux", "◡", 2, 3, "Each singer has their own part, which is randomly generated; it’s OK if you’re moving faster or slower than others, or if there are some you don’t sing. Everyone will, at the same time, get the message [stop]. If you’re singing, finish the word you’re on. Then, the piece is over. Until then, practice with a few more words!" ],
+
 	
 ]
 
