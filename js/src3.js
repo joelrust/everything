@@ -761,13 +761,21 @@ function playAudioChooseWord() {
 
 	let pitchNumIndex = Math.floor(Math.random() * currentPitchSet.length);
 	let nam = `audio/${currentPitchSet[pitchNumIndex]}.m4a`;
+
+
 	audio.src = nam;
+	audio.volume = 0.33 ;
 	let volume = document.querySelector("#volu");
-audio.volume = 0.33;
+
 	volume.addEventListener("change", function(e) {
  audio.volume = (e.currentTarget.value / 48) ;
  });
+
 	audio.play();
+
+
+
+
 	document.getElementById("startButton").innerHTML = "Next";
 
 	var ln = [Math.floor(Math.random() * currentLengthSet.length)];
@@ -827,13 +835,12 @@ function startText() {
 };
 
 function audioLaunch() {
-
  let volume = document.querySelector("#volu");
+ audio.volume = 0.33;
 
  volume.addEventListener("change", function(e) {
-audio.volume = e.currentTarget.value / 48;
+audio.volume = (e.currentTarget.value / 48) ;
 });
-
 
     audio.src = "click.mp3";
 
