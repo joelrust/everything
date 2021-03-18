@@ -94,6 +94,14 @@ function playAudioChooseWord() {
 	let nam = `audio/${currentSettings[0]}.m4a`;
 
 	audio.src = nam;
+	// let rawVolume =
+	audio.volume = 0.33 ;
+	let volume = document.querySelector("#volu");
+
+	volume.addEventListener("change", function(e) {
+ audio.volume = (e.currentTarget.value / 48) ;
+ });
+
 	audio.play();
 	document.getElementById("startButton").innerHTML = "Next";
 
@@ -167,14 +175,17 @@ currentDynamic = dynamicSet[currentDynamicIndex];
 	);
 };
 
-function audioLaunch() {
+// var volumeMult = 1
 
+function audioLaunch() {
+ // let volumeMulter = volumeMult;
  let volume = document.querySelector("#volu");
+ // let volume = rawVolume * volumeMulter;
+ audio.volume = 0.33;
 
  volume.addEventListener("change", function(e) {
-audio.volume = e.currentTarget.value / 64;
+audio.volume = (e.currentTarget.value / 48) ;
 });
-
 
     audio.src = "click.mp3";
 
@@ -193,9 +204,22 @@ audio.volume = e.currentTarget.value / 64;
 	audio = 0;
 	document.getElementById("dyn").innerHTML = "—";
 }
+//
+// var volumeBoost = document.getElementById('toggleswitch2');
+//
+//
+// volumeBoost.addEventListener('change',function(){
+// 		if(this.checked) {
+// 			 volumeMult = 2;
+//
+//
+// 		} else {
+// 				volumeMult = 1;
+//
+// 		};
 
 
-
+  // });
     var input = document.getElementById('toggleswitch');
     var outputtext = document.getElementById('status');
 

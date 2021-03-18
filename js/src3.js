@@ -16,7 +16,7 @@ function startTenor() {
 
 function doNothing() {
 	}
-	
+
 //const audioButton = document.querySelector("#audioButton");
 //audioButton.onclick = audioLaunch;
 
@@ -78,8 +78,8 @@ const setSettings = [
 	[0],
 	[0],
 	[0],
-	[1],   	
-	[1],	
+	[1],
+	[1],
 	[2, 5, 6, 1, 0],
 	[0],
 	[2, 4, 5, 2, 0],
@@ -208,7 +208,7 @@ const tenorOverrideSettings = [
 	[1, 2, 6, 4, 0],
 	[1, 3, 6, 4, 0],
 	[1, 3, 6, 3, 0],
-	[10, 10, 6, 2, 0]	
+	[10, 10, 6, 2, 0]
 ]
 
 const bassOverrideSettings = [
@@ -225,7 +225,7 @@ const bassOverrideSettings = [
 	[1, 2, 6, 4, 0],
 	[1, 3, 6, 4, 0],
 	[1, 3, 6, 3, 0],
-	[2, 3, 6, 2, 0]	
+	[2, 3, 6, 2, 0]
 ]
 
 let overrideSettings;
@@ -262,13 +262,13 @@ var currentLengthSet = lengthSets[currentLengthSetIndex];
 var currentDynamic = dynamicSet[currentDynamicIndex];
 
 const sopranoPitchSets = [
-	["65"],        
+	["65"],
 	["65", "65", "67"],
-	["65", "67", "67"],      
+	["65", "67", "67"],
 	["67"],
-	["67", "67", "69"],        
+	["67", "67", "69"],
 	["67", "69"],
-	["67", "69", "69"],        
+	["67", "69", "69"],
 	["69"],
 	["69", "69", "71"],
 	["69", "71"],
@@ -713,7 +713,7 @@ const bassPitchSets = [
 	["45"],
 	["45"],
 	["45"],
-	["45"],	
+	["45"],
 ];
 
 function startPiece() {
@@ -738,11 +738,11 @@ function startPiece() {
 					currentLengthSet = lengthSets[currentLengthSetIndex];
 					currentDynamic = dynamicSet[currentDynamicIndex]
 				}
-			}		
-		currentPitchSetIndex = currentSettingsIndex;				
+			}
+		currentPitchSetIndex = currentSettingsIndex;
 		},
 		(5000)
-	);    
+	);
 }
 
 function playAudioChooseWord() {
@@ -762,18 +762,23 @@ function playAudioChooseWord() {
 	let pitchNumIndex = Math.floor(Math.random() * currentPitchSet.length);
 	let nam = `audio/${currentPitchSet[pitchNumIndex]}.m4a`;
 	audio.src = nam;
+	let volume = document.querySelector("#volu");
+audio.volume = 0.33;
+	volume.addEventListener("change", function(e) {
+ audio.volume = (e.currentTarget.value / 48) ;
+ });
 	audio.play();
 	document.getElementById("startButton").innerHTML = "Next";
 
 	var ln = [Math.floor(Math.random() * currentLengthSet.length)];
 	document.getElementById("length").innerHTML = currentLengthSet[ln];
-	
+
 	// choose the word and show it
 	var wn = [( Math.floor(Math.random() * (wordRange)
 		+ wordLowBounds - wordLowBoundsInitial)) % wordlist.length
 	];
 	document.getElementById("demo").innerHTML = wordlist[wn];
-	
+
 	document.getElementById("dyn").innerHTML = currentDynamic;
 }
 
@@ -801,7 +806,7 @@ function startText() {
                //       var debugTimer = ((countdownSecondsLeft + 3) * 1000);
               //        setTimeout(startText, debugTimer);
     // end of test
-	
+
 	var countdownTimer = setInterval(
 		function() {
 			countdownSecondsLeft -= 1;
@@ -822,21 +827,21 @@ function startText() {
 };
 
 function audioLaunch() {
- 
+
  let volume = document.querySelector("#volu");
 
  volume.addEventListener("change", function(e) {
-audio.volume = e.currentTarget.value / 64;
+audio.volume = e.currentTarget.value / 48;
 });
 
- 
+
     audio.src = "click.mp3";
 
     audio.play();
 }
 
 
- function resetPiece() { 
+ function resetPiece() {
 	var e = document.getElementById("demo");
 	e.id = "fin";
 	document.getElementById("fin").innerHTML = "[stop]";
@@ -856,15 +861,15 @@ audio.volume = e.currentTarget.value / 64;
     input.addEventListener('change',function(){
         if(this.checked) {
            dynamicSet = dynamicSymbols;
-		   
+
         } else {
             dynamicSet = dynamicLetters;
-			
+
         };
 		currentDynamic = dynamicSet[currentDynamicIndex];
 		if (isCountdown == 0) {
-			
-		document.getElementById("dyn").innerHTML = currentDynamic;	
+
+		document.getElementById("dyn").innerHTML = currentDynamic;
 			}
-		
+
     });
