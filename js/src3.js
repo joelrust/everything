@@ -13,6 +13,10 @@ function startTenor() {
 	startText();
 }
 
+
+function doNothing() {
+	}
+	
 //const audioButton = document.querySelector("#audioButton");
 //audioButton.onclick = audioLaunch;
 
@@ -32,7 +36,7 @@ const lengthSets = [
 
 var dynamicSet = ["<i>pp</i>", "<i>p</i>", "<i>mp</i>", "<i>mf</i>", "<i>f</i>", "<i>ff</i>"];
 
-const dynamicSymbols = ["|⎽|", "|⎼|", "|–|", "|–|", "|⎻|", "|⎺|"];
+const dynamicSymbols = ["quiet", "quiet", "medium", "medium", "loud", "loud"];
 
 const dynamicLetters = ["<i>pp</i>", "<i>p</i>", "<i>mp</i>", "<i>mf</i>", "<i>f</i>", "<i>ff</i>"];
 
@@ -778,6 +782,8 @@ var isCountdown = 1;
 function startText() {
 	isCountdown = 1;
 	document.getElementById("startButton").innerHTML = "wait";
+	startButton.onclick = doNothing;
+
 	document.getElementById("length").innerHTML = "&nbsp;";
 	document.getElementById("dyn").innerHTML = "&nbsp;";
 
@@ -803,6 +809,8 @@ function startText() {
 				isCountdown = 0;
 				// Stop the countdown, and play the audio
 				playAudioChooseWord();
+				startButton.onclick = startText;
+
 				clearInterval(countdownTimer);
 			} else {
 				// Show the new value of the countdown

@@ -13,6 +13,9 @@ function startTenor() {
 	startText();
 }
 
+function doNothing() {
+	}
+
 //const audioButton = document.querySelector("#audioButton");
 //audioButton.onclick = audioLaunch;
 
@@ -35,7 +38,7 @@ const demoSets = [
 	["60", "spanner", "◡", 2, 3, "Each singer has their own part, which is randomly generated; it’s OK if you’re moving faster or slower than others, or if there are some you don’t sing. Everyone will, at the same time, get the message [stop]. If you’re singing, finish the word you’re on. Then, the piece is over. Until then, practice with a few more words!" ],
 	["60", "flux", "◡", 2, 3, "Each singer has their own part, which is randomly generated; it’s OK if you’re moving faster or slower than others, or if there are some you don’t sing. Everyone will, at the same time, get the message [stop]. If you’re singing, finish the word you’re on. Then, the piece is over. Until then, practice with a few more words!" ],
 
-	
+
 ]
 
 
@@ -73,12 +76,12 @@ var currentDynamic = dynamicSet[currentDynamicIndex];
 //			currentSettingsIndex += 1;
 //			currentSettings = demoSets[currentSettingsIndex];
 //			if (currentSettings != 0 ) {
-//			
-//			}		
-//		currentPitchSetIndex = currentSettingsIndex;				
+//
+//			}
+//		currentPitchSetIndex = currentSettingsIndex;
 //		},
 //		(5000)
-//	);    
+//	);
 //}
 
 
@@ -89,22 +92,22 @@ function playAudioChooseWord() {
 	// select audio file and play it
 
 	let nam = `audio/${currentSettings[0]}.m4a`;
-	
+
 	audio.src = nam;
 	audio.play();
 	document.getElementById("startButton").innerHTML = "Next";
 
 	document.getElementById("length").innerHTML = currentSettings[2];
-	
+
 	// choose the word and show it
 	var wn = currentSettings[2];
 	document.getElementById("demo").innerHTML = currentSettings[1];
-	
+
 	document.getElementById("dyn").innerHTML = currentDynamic;
-	
+
 		document.getElementById("instr").innerHTML = currentSettings[5];
 
-	
+
 }
 
 
@@ -121,8 +124,9 @@ function startText() {
 				currentSettings = demoSets[currentSettingsIndex];
 					lo =  currentSettings[4];
 					hi = currentSettings[4];
-				
+
 	document.getElementById("startButton").innerHTML = "wait";
+	startButton.onclick = doNothing;
 	document.getElementById("length").innerHTML = "&nbsp;";
 	document.getElementById("dyn").innerHTML = "&nbsp;";
 	document.getElementById("instr").innerHTML = currentSettings[5];
@@ -143,7 +147,7 @@ currentDynamic = dynamicSet[currentDynamicIndex];
                //       var debugTimer = ((countdownSecondsLeft + 3) * 1000);
               //        setTimeout(startText, debugTimer);
     // end of test
-	
+
 	var countdownTimer = setInterval(
 		function() {
 			countdownSecondsLeft -= 1;
@@ -152,6 +156,8 @@ currentDynamic = dynamicSet[currentDynamicIndex];
 				// Stop the countdown, and play the audio
 				playAudioChooseWord();
 				clearInterval(countdownTimer);
+				startButton.onclick = startText;
+
 			} else {
 				// Show the new value of the countdown
 				document.getElementById("demo").innerHTML = countdownSecondsLeft;
@@ -162,21 +168,21 @@ currentDynamic = dynamicSet[currentDynamicIndex];
 };
 
 function audioLaunch() {
- 
+
  let volume = document.querySelector("#volu");
 
  volume.addEventListener("change", function(e) {
 audio.volume = e.currentTarget.value / 64;
 });
 
- 
+
     audio.src = "click.mp3";
 
     audio.play();
 }
 
 
- function resetPiece() { 
+ function resetPiece() {
 	var e = document.getElementById("demo");
 	e.id = "fin";
 	document.getElementById("fin").innerHTML = "[stop]";
@@ -196,15 +202,15 @@ audio.volume = e.currentTarget.value / 64;
     input.addEventListener('change',function(){
         if(this.checked) {
            dynamicSet = dynamicSymbols;
-		   
+
         } else {
             dynamicSet = dynamicLetters;
-			
+
         };
 		currentDynamic = dynamicSet[currentDynamicIndex];
 		if (isCountdown == 0) {
-			
-		document.getElementById("dyn").innerHTML = currentDynamic;	
+
+		document.getElementById("dyn").innerHTML = currentDynamic;
 			}
-		
+
     });
