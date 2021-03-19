@@ -764,7 +764,7 @@ function playAudioChooseWord() {
 
 
 	audio.src = nam;
-	audio.volume = 0.33 ;
+
 	let volume = document.querySelector("#volu");
 
 	volume.addEventListener("change", function(e) {

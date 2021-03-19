@@ -54,17 +54,17 @@ const bassPitchSets = [
     ["57"],                //4
     ["57"],                //5
 
-    
+
 ];
 
 let currentPitchSetIndex = 0;
 
 function startPiece() {
-   
+
     wordChanges();
     voiceTimeouts()
 }
-   
+
    var wordRange = 1;
    var wordLowBound = 0;
    const wordInterval = 4.85;
@@ -85,7 +85,7 @@ function wordChanges() {
    setTimeout(function () { wordLowBound = 14; }, (15 * wordInterval * mult));
    setTimeout(function () { wordLowBound = 15; }, (16 * wordInterval * mult));
    setTimeout(function () { wordLowBound = 16; }, (17 * wordInterval * mult));
-//   setTimeout(function () { wordLowBound = 1; },    (17 * wordInterval * mult));   
+//   setTimeout(function () { wordLowBound = 1; },    (17 * wordInterval * mult));
 }
 
 function voiceTimeouts() {
@@ -94,8 +94,8 @@ function voiceTimeouts() {
    setTimeout(function () { hi = 8; lo = 8 }, (43.5 * mult));
    setTimeout(function () { hi = 7; lo = 7 }, (44.5 * mult));
    setTimeout(function () { hi = 5; lo = 5 }, (45.5 * mult));
-   setTimeout(function () { hi = 4; lo = 4 }, (46.5 * mult));   
-   setTimeout(function () { hi = 3; lo = 3 }, (47.5 * mult));   
+   setTimeout(function () { hi = 4; lo = 4 }, (46.5 * mult));
+   setTimeout(function () { hi = 3; lo = 3 }, (47.5 * mult));
    setTimeout(function () { hi = 2; lo = 2 }, (48.5 * mult));
    setTimeout(function () { currentPitchSetIndex = 3 }, (54 * mult));
    setTimeout(function () { currentPitchSetIndex = 4; hi = 3; lo = 3 }, (66 * mult));
@@ -131,6 +131,11 @@ function playAudioChooseWord() {
     const pitchNumIndex = Math.floor(Math.random() * currentPitchSet.length);
     const nam = `audio/${currentPitchSet[pitchNumIndex]}.m4a`;
     audio.src = nam;
+    let volume = document.querySelector("#volu");
+    // audio.volume = 0.33;
+    volume.addEventListener("change", function(e) {
+   audio.volume = e.currentTarget.value / 48;
+   });
     audio.play();
     document.getElementById("startButton").innerHTML = "Next";
 
@@ -175,14 +180,14 @@ function startText() {
 
 
 function audioLaunch() {
- 
- let volume = document.querySelector("#volu");
 
+ let volume = document.querySelector("#volu");
+audio.volume = 0.33;
  volume.addEventListener("change", function(e) {
-audio.volume = e.currentTarget.value / 64;
+audio.volume = e.currentTarget.value / 48;
 });
 
- 
+
     audio.src = "click.mp3";
 
     audio.play();
