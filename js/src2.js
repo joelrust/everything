@@ -144,8 +144,12 @@ function playAudioChooseWord() {
     document.getElementById("demo").innerHTML = wordList[wn];
 }
 
+function doNothing() {
+	}
+
 function startText() {
     document.getElementById("startButton").innerHTML = "wait";
+    startButton.onclick = doNothing;
 
     var countdownSecondsLeft = ([Math.floor(Math.random() * (hi - lo + 1)) + lo] * 1);
     document.getElementById("demo").innerHTML = countdownSecondsLeft;
@@ -166,6 +170,8 @@ function startText() {
             countdownSecondsLeft -= 1;
             if (countdownSecondsLeft <= 0) {
                 // Stop the countdown, and play the audio
+                startButton.onclick = startText;
+
                 playAudioChooseWord();
                 clearInterval(countdownTimer);
             } else {
